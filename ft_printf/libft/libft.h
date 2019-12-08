@@ -92,5 +92,6 @@ void				ft_str_swap(char **a, char **b);
 int					ft_max(int a, int b);
 void				ft_reverse_str(char *str);
 char				*ft_strcapitalize(char *str);
+int					ft_atoi_spec(const char *str);
 
 #endif
