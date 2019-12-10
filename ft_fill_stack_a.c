@@ -43,8 +43,8 @@ static void		check_null(char *str)
 		ft_error();
 }
 
-//check $ARG behavior "1 2 3 4" == one str or four
-//improve "   0  " behavior - error or not
+//check $ARG behavior "1 2 3 4" == one str or four - one
+//improve "   0  " behavior - error or not - error(mb improved later)
 
 static int		get_num(char *str)
 {
@@ -69,20 +69,23 @@ void ft_fill_a(t_ls **head, char **av, int ac)
 			ft_error();
 		while (*av[i])
 		{
-			if (node == NULL)
+/*			if (node == NULL)
 			{
-				node = ft_add_node(node, get_num(av[i]));
+				node = ft_new_node(get_num(av[i]));
 				*head = node;
 			}
 			else
 			{
-				node = ft_add_node(node, get_num(av[i]));
+				node = ft_new_node(get_num(av[i]));
 				ft_check_duplicates(node, *head);
-			}
+			}*/
+			node = ft_new_node(get_num(av[i]));
+			ft_add_node_back(head, node);
+			ft_check_duplicates(node, *head);
 			av[i] += next_num(av[i]);
 		}
 	}
-	cycle_list(node, *head);
+//	cycle_list(node, *head);
 }
 //first arg at the top of the stack
 //sorting - top (smallest) -> down (biggest)

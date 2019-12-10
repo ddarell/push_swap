@@ -64,8 +64,6 @@
 # define LD_LIMIT_E 11495
 # define LD_LIMIT_M 20
 
-# define MAX_FD 10241
-
 typedef struct			s_ldbl
 {
 	unsigned long long	lull;

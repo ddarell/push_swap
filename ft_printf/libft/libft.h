@@ -12,9 +12,13 @@
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
 # include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
+
+# define GNL_BUFF_SIZE  4
+# define MAX_FD 1
 
 typedef struct		s_list
 {
@@ -93,5 +97,6 @@ int					ft_max(int a, int b);
 void				ft_reverse_str(char *str);
 char				*ft_strcapitalize(char *str);
 int					ft_atoi_spec(const char *str);
+int					get_next_line(const int fd, char **line);
 
 #endif

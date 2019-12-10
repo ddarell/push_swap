@@ -1,5 +1,4 @@
 #include "checker.h"
-#include "gnl/get_next_line.h"//add last vers to the lib
 
 static int 	compare_symbol(char compared, char s0, char s1, char s2)
 {
@@ -63,6 +62,7 @@ int			main(int ac, char **av)
 
 	head_a = NULL;
 	head_b = NULL;
+	ft_printf("ac = %d\n\n", ac);
 	if (ac < 2)
 		return (0);
 	ft_fill_a(&head_a, av, ac);
@@ -70,5 +70,7 @@ int			main(int ac, char **av)
 	if (!(head_a))
 		return (0);
 	read_exec_commands(&head_a, &head_b);
+	ft_printf("\n");//
+	ft_print_stack(head_a);//
 	return (0);
 }
