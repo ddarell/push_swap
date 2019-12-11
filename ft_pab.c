@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sets.c                                          :+:      :+:    :+:   */
+/*   ft_pab.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddarell <ddarell@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/11 23:30:28 by ddarell           #+#    #+#             */
-/*   Updated: 2019/12/11 23:30:29 by ddarell          ###   ########.fr       */
+/*   Created: 2019/12/11 23:32:11 by ddarell           #+#    #+#             */
+/*   Updated: 2019/12/11 23:32:12 by ddarell          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void	ft_set_commands(void (**command)(t_ls **, t_ls **))
+void	ft_pa(t_ls **head_a, t_ls **head_b)
 {
-	command[0] = &ft_sa;
-	command[1] = &ft_sb;
-	command[2] = &ft_ss;
-	command[3] = &ft_pa;
-	command[4] = &ft_pb;
-	command[5] = &ft_ra;
-	command[6] = &ft_rb;
-	command[7] = &ft_rr;
-	command[8] = &ft_rra;
-	command[9] = &ft_rrb;
-	command[10] = &ft_rrr;
+	t_ls	*node;
+
+	node = ft_remove_node(head_b, *head_b);
+	ft_add_node_top(head_a, node);
+}
+
+void	ft_pb(t_ls **head_a, t_ls **head_b)
+{
+	t_ls	*node;
+
+	node = ft_remove_node(head_a, *head_a);
+	ft_add_node_top(head_b, node);
 }

@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_nodes.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ddarell <ddarell@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/12/11 23:32:19 by ddarell           #+#    #+#             */
+/*   Updated: 2019/12/11 23:32:27 by ddarell          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "checker.h"
 
-t_ls *ft_new_node(int data)
+t_ls	*ft_new_node(int data)
 {
 	t_ls	*new_node;
 
@@ -15,8 +27,10 @@ t_ls *ft_new_node(int data)
 
 void	ft_add_node_back(t_ls **head, t_ls *node)
 {
-	t_ls *back_node;
+	t_ls *last_node;
 
+	if (!(node))
+		return ;
 	if (!(*head))
 	{
 		*head = node;
@@ -24,20 +38,25 @@ void	ft_add_node_back(t_ls **head, t_ls *node)
 		node->prev = node;
 		return ;
 	}
-	back_node = (*head)->prev;
-	back_node->next = node;
+	last_node = (*head)->prev;
+	last_node->next = node;
 	(*head)->prev = node;
 	node->next = *head;
-	node->prev = back_node;
+	node->prev = last_node;
 }
 
 void	ft_add_node_top(t_ls **head, t_ls *node)
 {
-	return ;
+	if (!(node))
+		return ;
+	ft_add_node_back(head, node);
+	*head = (*head)->prev;
 }
 
 t_ls	*ft_remove_node(t_ls **head, t_ls *node)
 {
+	if (!(*head || node))
+		return (NULL);
 	if (node->next == node)
 	{
 		*head = NULL;

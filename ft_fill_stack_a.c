@@ -1,36 +1,36 @@
-#include "checker.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_fill_stack_a.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ddarell <ddarell@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/12/11 23:32:42 by ddarell           #+#    #+#             */
+/*   Updated: 2019/12/11 23:37:22 by ddarell          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-static void		cycle_list(t_ls *node, t_ls *head)
-{
-	if (node)
-	{
-		node->next = head;
-		head->prev = node;
-	}
-}
+#include "checker.h"
 
 static long int	next_num(char *str)
 {
 	char *tmp;
 
 	tmp = str;
-	while (*str == ' ' || *str == '\r' || *str == '\v'
-			|| *str == '\f' || *str == '\t' || *str == '\n')
+	while (*str == ' ' || *str == '\t' || *str == '\n')
 		str++;
 	if (*str == '-' || *str == '+')
 		str++;
 	while (*str >= '0' && *str <= '9')
 		str++;
-	if (!(*str == ' ' || *str == '\r' || *str == '\v'
-		 || *str == '\f' || *str == '\t' || *str == '\n' || *str == 0))
+	if (!(*str == ' ' || *str == '\t' || *str == '\n' || *str == 0))
 		ft_error();
 	return (str - tmp);
 }
 
 static void		check_null(char *str)
 {
-	while (*str == ' ' || *str == '\r' || *str == '\v'
-		   || *str == '\f' || *str == '\t' || *str == '\n')
+	while (*str == ' ' || *str == '\t' || *str == '\n')
 		str++;
 	if (*str == '-' || *str == '+')
 		str++;
@@ -38,13 +38,9 @@ static void		check_null(char *str)
 		ft_error();
 	while (*str == '0')
 		str++;
-	if (!(*str == ' ' || *str == '\r' || *str == '\v'
-		  || *str == '\f' || *str == '\t' || *str == '\n' || *str == 0))
+	if (!(*str == ' ' || *str == '\t' || *str == '\n' || *str == 0))
 		ft_error();
 }
-
-//check $ARG behavior "1 2 3 4" == one str or four - one
-//improve "   0  " behavior - error or not - error(mb improved later)
 
 static int		get_num(char *str)
 {
@@ -56,42 +52,29 @@ static int		get_num(char *str)
 	return (i);
 }
 
-void ft_fill_a(t_ls **head, char **av, int ac)
+void			ft_fill_stack_a(t_ls **head, char **av, int ac)
 {
-	t_ls	*node;
-	int		i;
+	t_ls		*node;
+	int			i;
+	long int	j;
+	char		*str;
 
 	i = 0;
+	j = 0;
 	node = NULL;
-	while (++i < ac)
+	while (++i < ac && av[i])
 	{
-		if (*av[i] == 0)
+		str = ft_strtrim(av[i]);
+		if (*str == 0)
 			ft_error();
-		while (*av[i])
+		while (str[j])
 		{
-/*			if (node == NULL)
-			{
-				node = ft_new_node(get_num(av[i]));
-				*head = node;
-			}
-			else
-			{
-				node = ft_new_node(get_num(av[i]));
-				ft_check_duplicates(node, *head);
-			}*/
-			node = ft_new_node(get_num(av[i]));
+			node = ft_new_node(get_num(str + j));
 			ft_add_node_back(head, node);
 			ft_check_duplicates(node, *head);
-			av[i] += next_num(av[i]);
+			j += next_num(str + j);
 		}
+		free(str);
+		j = 0;
 	}
-//	cycle_list(node, *head);
 }
-//first arg at the top of the stack
-//sorting - top (smallest) -> down (biggest)
-//1
-//2
-//3
-//4
-//5
-//6

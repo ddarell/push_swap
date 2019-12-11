@@ -18,7 +18,7 @@
 # include <stdlib.h>
 
 # define GNL_BUFF_SIZE  4
-# define MAX_FD 1
+# define MAX_FD 10240
 
 typedef struct		s_list
 {

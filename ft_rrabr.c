@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sets.c                                          :+:      :+:    :+:   */
+/*   ft_rrabr.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddarell <ddarell@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/11 23:30:28 by ddarell           #+#    #+#             */
-/*   Updated: 2019/12/11 23:30:29 by ddarell          ###   ########.fr       */
+/*   Created: 2019/12/11 23:30:48 by ddarell           #+#    #+#             */
+/*   Updated: 2019/12/11 23:31:16 by ddarell          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void	ft_set_commands(void (**command)(t_ls **, t_ls **))
+void	ft_rra(t_ls **head_a, t_ls **head_b)
 {
-	command[0] = &ft_sa;
-	command[1] = &ft_sb;
-	command[2] = &ft_ss;
-	command[3] = &ft_pa;
-	command[4] = &ft_pb;
-	command[5] = &ft_ra;
-	command[6] = &ft_rb;
-	command[7] = &ft_rr;
-	command[8] = &ft_rra;
-	command[9] = &ft_rrb;
-	command[10] = &ft_rrr;
+	head_b = NULL;
+	if (*head_a)
+		*head_a = (*head_a)->prev;
+}
+
+void	ft_rrb(t_ls **head_a, t_ls **head_b)
+{
+	head_a = NULL;
+	if (*head_b)
+		*head_b = (*head_b)->prev;
+}
+
+void	ft_rrr(t_ls **head_a, t_ls **head_b)
+{
+	if (*head_a)
+		*head_a = (*head_a)->prev;
+	if (*head_b)
+		*head_b = (*head_b)->prev;
 }

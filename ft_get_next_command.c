@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sets.c                                          :+:      :+:    :+:   */
+/*   ft_get_next_command.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddarell <ddarell@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/11 23:30:28 by ddarell           #+#    #+#             */
-/*   Updated: 2019/12/11 23:30:29 by ddarell          ###   ########.fr       */
+/*   Created: 2019/12/11 23:32:33 by ddarell           #+#    #+#             */
+/*   Updated: 2019/12/11 23:36:06 by ddarell          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void	ft_set_commands(void (**command)(t_ls **, t_ls **))
+int	ft_get_next_command(int fd, char *cmd)
 {
-	command[0] = &ft_sa;
-	command[1] = &ft_sb;
-	command[2] = &ft_ss;
-	command[3] = &ft_pa;
-	command[4] = &ft_pb;
-	command[5] = &ft_ra;
-	command[6] = &ft_rb;
-	command[7] = &ft_rr;
-	command[8] = &ft_rra;
-	command[9] = &ft_rrb;
-	command[10] = &ft_rrr;
+	int i;
+	int ret;
+
+	i = 0;
+	ret = 0;
+	while (i < 4 && (ret = read(fd, cmd + i, 1)) > 0)
+	{
+		if (*(cmd + i) == '\n')
+			break ;
+		i++;
+	}
+	if (ret == -1 || (ret > 0 && (i > 3 || i < 2)) || (ret == 0 && i != 0))
+		ft_error();
+	cmd[i] = 0;
+	return (ret);
 }
