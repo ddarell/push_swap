@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "ps_header.h"
 
 void	ft_check_duplicates(t_ls *node, t_ls *head)
 {
@@ -65,4 +65,42 @@ void	ft_free_ls(t_ls **top)
 		free(back);
 	}
 	*top = NULL;
+}
+
+int ft_count_ls(t_ls *head_a)
+{
+	int		i;
+	t_ls	*tmp;
+
+	if (!(head_a))
+		return (0);
+	i = 1;
+	tmp = head_a->next;
+	while (tmp != head_a)
+	{
+		i++;
+		tmp = tmp->next;
+	}
+	return (i);
+}
+
+t_ls *ft_dup_ls(t_ls *dst, t_ls *src)
+{
+	t_ls	*node;
+	t_ls	*tmp;
+
+	if (!(src))
+		return (NULL);
+	node = ft_new_node(src->numb);
+	node->ord = src->ord;
+	ft_add_node_back(&dst, node);
+	tmp = src->next;
+	while (tmp != src)
+	{
+		node = ft_new_node(tmp->numb);
+		node->ord = tmp->ord;
+		ft_add_node_back(&dst, node);
+		tmp = tmp->next;
+	}
+	return (dst);
 }

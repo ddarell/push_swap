@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "ps_header.h"
 
 void	ft_sa(t_ls **head_a, t_ls **head_b)
 {

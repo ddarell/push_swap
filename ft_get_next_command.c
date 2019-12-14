@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "ps_header.h"
 
 int	ft_get_next_command(int fd, char *cmd)
 {

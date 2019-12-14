@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "ps_header.h"
 
 static long int	next_num(char *str)
 {

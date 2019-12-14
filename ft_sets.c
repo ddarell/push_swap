@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "ps_header.h"
 
 void	ft_set_commands(void (**command)(t_ls **, t_ls **))
 {
@@ -25,4 +25,16 @@ void	ft_set_commands(void (**command)(t_ls **, t_ls **))
 	command[8] = &ft_rra;
 	command[9] = &ft_rrb;
 	command[10] = &ft_rrr;
+}
+
+void	ft_set_srt_data(t_srt_data *srt_data, t_ls *head_a)
+{
+	srt_data->a_elmnts = ft_count_ls(head_a);
+	srt_data->b_elmnts = 0;
+	srt_data->cm = NULL;
+	srt_data->sorted = NULL;
+	srt_data->sma_a = 1;
+	srt_data->sma_b = srt_data->a_elmnts;
+	srt_data->big_a = 0;
+	srt_data->big_b = 0;
 }

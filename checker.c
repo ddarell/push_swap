@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "ps_header.h"
 
 static int	compare_symbol(char compared, char s0, char s1, char s2)
 {
