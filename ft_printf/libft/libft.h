@@ -98,5 +98,8 @@ void				ft_reverse_str(char *str);
 char				*ft_strcapitalize(char *str);
 int					ft_atoi_spec(const char *str);
 int					get_next_line(const int fd, char **line);
+int					ft_bit_check(int flag, int position);
+void				ft_bit_on(int *flag, int position);
+void				ft_bit_off(int *flag, int position);
 
 #endif

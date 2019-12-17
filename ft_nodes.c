@@ -20,8 +20,8 @@ t_ls	*ft_new_node(int data)
 	if (new_node == NULL)
 		ft_error();
 	new_node->numb = data;
-	new_node->ord = -1;
-	new_node->asc = 0;
+//	new_node->ord = -1;
+	new_node->fl = 0;
 	new_node->next = NULL;
 	new_node->prev = NULL;
 	return (new_node);

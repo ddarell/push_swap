@@ -15,27 +15,32 @@
 
 # include "ft_printf/ft_printf.h"
 
+# define ORD 0
+# define LDIR 1
+
 typedef	struct	s_ls
 {
 	struct s_ls	*next;
 	struct s_ls	*prev;
 	int			numb;
-	int 		ord;
-	int 		asc;
+//	int 		ord;
+	int 		fl;
 }				t_ls;
 
 typedef	struct	s_cm
 {
 	struct s_cm	*next;
-	struct s_cm	*prev;
+//	struct s_cm	*prev;
 	char cmd[4];
 }				t_cm;
 
 typedef	struct	s_srt_data
 {
 	t_cm		*cm;
-	int 		a_elmnts; //number of elmnts in a stack
-	int 		b_elmnts; //number of elmnts in b stack
+	int 		a_els; //number of elmnts in a stack
+	int 		b_els; //number of elmnts in b stack
+	int 		srt_els_a;
+	int			nsrt_els_a;
 	int 		*sorted;
 	int 		sma_a; //smallest order in a
 	int			sma_b; //smallest order in b
@@ -77,14 +82,20 @@ int				ft_count_ls(t_ls *head_a);
 void			ft_fill_array(t_srt_data *srt_data, t_ls *head_a);
 void			ft_sort_array(t_srt_data *srt_data);
 void			ft_init_elem_ord(t_srt_data *srt_data, t_ls *head_a);
-void ft_detect_sorted_data(t_srt_data *srt_data, t_ls *top, t_ls *dup);
+void ft_detect_sorted_data(t_srt_data *srt_data, t_ls *top, t_ls **dup);
 
 //int	ft_find_int_tab(int *tab, int num);
 //void	ft_add_int_tab(int *tab, t_ls *node, t_ls *top);
 int	ft_int_tab_copy(int *dst, int *src);
 t_ls *ft_dup_ls(t_ls *dst, t_ls *src);
+t_ls	*ft_search_ls(t_ls *top, int num);
 
 void	ft_generate_commands(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b);
+
+int	ft_check_pa(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b);
+
+int		ft_check_pa(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b);
+void	ft_add_command(t_cm **cm, char *str);
 
 
 void			ft_print_stack(t_ls	*top);

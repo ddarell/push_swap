@@ -7,19 +7,19 @@ void	ft_init_elem_ord(t_srt_data *srt_data, t_ls *head_a)
 
 	tmp = head_a->next;
 	i = -1;
-	while (++i < srt_data->a_elmnts)
+	while (++i < srt_data->a_els)
 		if (srt_data->sorted[i] == head_a->numb)
 		{
-			head_a->ord = i + 1;
+			head_a->numb = i + 1;
 			break ;
 		}
 	while (tmp != head_a)
 	{
 		i = -1;
-		while (++i < srt_data->a_elmnts)
+		while (++i < srt_data->a_els)
 			if (srt_data->sorted[i] == tmp->numb)
 			{
-				tmp->ord = i + 1;
+				tmp->numb = i + 1;
 				break ;
 			}
 		tmp = tmp->next;
@@ -33,11 +33,11 @@ void	ft_sort_array(t_srt_data *srt_data)
 	int j;
 
 	i = 0;
-	while (i < srt_data->a_elmnts)
+	while (i < srt_data->a_els)
 	{
 		j = i;
 		tmp_min = srt_data->sorted + i;
-		while (j < srt_data->a_elmnts)
+		while (j < srt_data->a_els)
 		{
 			if (srt_data->sorted[j] < *tmp_min)
 				tmp_min = srt_data->sorted + j;
@@ -53,7 +53,7 @@ void	ft_fill_array(t_srt_data *srt_data, t_ls *head_a)
 	int i;
 
 	i = 0;
-	while (i < srt_data->a_elmnts)
+	while (i < srt_data->a_els)
 	{
 		srt_data->sorted[i] = head_a->numb;
 		i++;
