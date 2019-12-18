@@ -30,3 +30,11 @@ void	ft_print_stack(t_ls *top)
 	}
 	ft_printf("\n");
 }
+
+void	ft_print_stacks(t_ls *head_a, t_ls *head_b)
+{
+	ft_printf("_____________________________\n");
+	ft_print_stack(head_a);
+	ft_print_stack(head_b);
+	ft_printf("_____________________________\n");
+}

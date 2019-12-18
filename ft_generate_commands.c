@@ -30,7 +30,8 @@ static void set_direction(t_srt_data *srt_data, t_ls *head_a)
 			}
 		}
 	}
-	ft_bit_on(&point->fl, LDIR);
+//	ft_bit_on(&point->fl, LDIR);
+	ft_bit_on(&head_a->fl, LDIR);
 }
 
 static void check_sorted_data(t_srt_data *srt_data, t_ls *head_a)
@@ -60,29 +61,30 @@ void	ft_generate_commands(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b)
 	{
 		if ((ft_check_pa(srt_data, head_a, head_b)) == 1)
 			continue;
-		else if ((check_pb(srt_data, head_a, head_b)) == 1)
+		else if ((ft_check_pb(srt_data, head_a, head_b)) == 1)
 			continue;
 		else
-			check_rrr(srt_data, head_a, head_b);
+			ft_check_rrr(srt_data, head_a, head_b);
 //		if (ft_bit_check(&(*head_a)->fl, SWAP))
 //			check_swap_nodes(srt_data, head_a, head_b);
 	}
 	while (srt_data->nsrt_els_a)
 	{
+		ft_print_stacks(*head_a, *head_b);
 		if ((ft_check_pa(srt_data, head_a, head_b)) == 1)
 			continue;
-		else if ((check_pb(srt_data, head_a, head_b)) == 1)
+		else if ((ft_check_pb(srt_data, head_a, head_b)) == 1)
 			continue;
 		else
-			check_rr(srt_data, head_a, head_b);
+			ft_check_rr(srt_data, head_a, head_b);
 //		if (ft_bit_check(&(*head_a)->fl, SWAP))
 //			check_swap_nodes(srt_data, head_a, head_b);
 	}
 //	insert_data(srt_data, head_a, head_b);
-	while (srt_data->b_els)
+/*	while (srt_data->b_els)
 	{
 		determine_point(srt_data, head_a, head_b);
 		go_to_point(srt_data, head_a, head_b);
 		ft_check_pa(srt_data, head_a, head_b);
-	}
+	}*/
 }

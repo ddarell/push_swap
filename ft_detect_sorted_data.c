@@ -82,10 +82,10 @@ void ft_detect_sorted_data(t_srt_data *srt_data, t_ls *top, t_ls **dup)
 			ft_printf("__%d__", tmp[i]);//
 		ft_printf("\n_______________________________\n");//*/
 	}
-	i = -1;
+/*	i = -1;
 	while (srt_data->sorted[++i])//
 		ft_printf("__%d__", srt_data->sorted[i]);//
-	ft_printf("\n_______________________________\n");//
+	ft_printf("\n_______________________________\n");//*/
 	match_sorted_numbers(top, srt_data->sorted);
 	srt_data->srt_els_a = curr;
 	free(tmp);

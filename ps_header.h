@@ -93,11 +93,17 @@ t_ls	*ft_search_ls(t_ls *top, int num);
 void	ft_generate_commands(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b);
 
 int	ft_check_pa(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b);
+int ft_pa_ability(t_ls *head_a, t_ls *head_b);
 
 int		ft_check_pa(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b);
 void	ft_add_command(t_cm **cm, char *str);
+int	ft_check_pb(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b);
+int	ft_check_rr(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b);
+int	ft_check_rrr(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b);
+
 
 
 void			ft_print_stack(t_ls	*top);
+void	ft_print_stacks(t_ls *head_a, t_ls *head_b);
 
 #endif
