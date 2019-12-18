@@ -80,11 +80,9 @@ void	ft_generate_commands(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b)
 //		if (ft_bit_check(&(*head_a)->fl, SWAP))
 //			check_swap_nodes(srt_data, head_a, head_b);
 	}
-//	insert_data(srt_data, head_a, head_b);
 /*	while (srt_data->b_els)
 	{
-		determine_point(srt_data, head_a, head_b);
-		go_to_point(srt_data, head_a, head_b);
-		ft_check_pa(srt_data, head_a, head_b);
+		ft_insert_srt(srt_data, head_a, head_b);
 	}*/
+	ft_print_stacks(*head_a, *head_b);
 }

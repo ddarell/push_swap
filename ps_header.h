@@ -18,6 +18,14 @@
 # define ORD 0
 # define LDIR 1
 
+typedef	struct	s_ins
+{
+	int			ra;
+	int 		rra;
+	int 		rb;
+	int 		rrb;
+}				t_ins;
+
 typedef	struct	s_ls
 {
 	struct s_ls	*next;
