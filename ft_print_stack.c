@@ -21,13 +21,21 @@ void	ft_print_stack(t_ls *top)
 		ft_printf("\n");
 		return ;
 	}
-	(ft_bit_check(top->fl, ORD)) == 1 ? ft_printf("{GRE}%d{EOC}\t", top->numb)
-										: ft_printf("%d\t", top->numb);
+	if ((ft_bit_check(top->fl, INS)) == 1)
+		ft_printf("{PUR}%d{EOC}\t", top->numb);
+	else if ((ft_bit_check(top->fl, ORD)) == 1)
+		ft_printf("{GRE}%d{EOC}\t", top->numb);
+	else
+		ft_printf("%d\t", top->numb);
 	tmp = top->next;
 	while (tmp != top)
 	{
-		(ft_bit_check(tmp->fl, ORD)) == 1 ? ft_printf("{GRE}%d{EOC}\t", tmp->numb)
-										  : ft_printf("%d\t", tmp->numb);
+		if ((ft_bit_check(tmp->fl, INS)) == 1)
+			ft_printf("{PUR}%d{EOC}\t", tmp->numb);
+		else if ((ft_bit_check(tmp->fl, ORD)) == 1)
+			ft_printf("{GRE}%d{EOC}\t", tmp->numb);
+		else
+			ft_printf("%d\t", tmp->numb);
 		tmp = tmp->next;
 	}
 	ft_printf("\n");

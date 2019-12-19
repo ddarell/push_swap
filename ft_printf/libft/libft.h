@@ -101,5 +101,7 @@ int					get_next_line(const int fd, char **line);
 int					ft_bit_check(int flag, int position);
 void				ft_bit_on(int *flag, int position);
 void				ft_bit_off(int *flag, int position);
+int					ft_seach_min_int(int *tab, int size);
+int					ft_search_int_tab(int *tab, int size, int num);
 
 #endif

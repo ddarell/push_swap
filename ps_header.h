@@ -17,6 +17,7 @@
 
 # define ORD 0
 # define LDIR 1
+# define INS 2
 
 typedef	struct	s_ins
 {
@@ -24,6 +25,8 @@ typedef	struct	s_ins
 	int 		rra;
 	int 		rb;
 	int 		rrb;
+	int			rr;
+	int 		rrr;
 }				t_ins;
 
 typedef	struct	s_ls
@@ -104,13 +107,22 @@ void	ft_generate_commands(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b);
 int	ft_check_pa(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b);
 int ft_pa_ability(t_ls *head_a, t_ls *head_b);
 
-int		ft_check_pa(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b);
+//int		ft_check_pa(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b);
 void	ft_add_command(t_cm **cm, char *str);
 int	ft_check_pb(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b);
 int	ft_check_rr(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b);
 int	ft_check_rrr(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b);
 
+void ft_insert(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b);
+int	ft_find_insert(t_srt_data *srt_data, t_ls *head_a, t_ls *head_b, t_ls **insert_purpose);
+t_ls	*ft_search_a_push_space(t_ls *head_a, t_ls *insert_b, t_ins *ins, t_srt_data *srt_data);
 
+void	ft_run_ra(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b);
+void	ft_run_rb(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b);
+void	ft_run_rr(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b);
+void	ft_run_rra(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b);
+void	ft_run_rrb(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b);
+void	ft_run_rrr(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b);
 
 void			ft_print_stack(t_ls	*top);
 void	ft_print_stacks(t_ls *head_a, t_ls *head_b);

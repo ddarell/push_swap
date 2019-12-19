@@ -16,6 +16,7 @@ static void	run_pa(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b)
 //	if (srt_data->big_b == (*head_a)->numb)
 //		srt_data->big_b = ft_search_max(*head_b);
 	ft_bit_on(&(*head_a)->fl, ORD);
+	ft_print_stacks(*head_a, *head_b);//
 }
 
 int ft_pa_ability(t_ls *head_a, t_ls *head_b)

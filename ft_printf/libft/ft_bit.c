@@ -2,7 +2,7 @@
 
 int		ft_bit_check(int flag, int position)
 {
-	return (flag & (1 << position));
+	return ((flag >> position) & 1);
 }
 
 void	ft_bit_on(int *flag, int position)

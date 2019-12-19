@@ -15,6 +15,7 @@ static void	run_pb(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b)
 //		srt_data->sma_a = ft_search_min(*head_a);
 //	if (srt_data->big_a == (*head_b)->numb)
 //		srt_data->big_a = ft_search_max(*head_a);
+	ft_print_stacks(*head_a, *head_b);//
 }
 
 static int	pb_ability(t_ls *head_a)

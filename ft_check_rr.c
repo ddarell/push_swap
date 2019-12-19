@@ -1,15 +1,24 @@
 #include "ps_header.h"
 
-static void	run_ra(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b)
+void	ft_run_rb(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b)
+{
+	ft_add_command(&srt_data->cm, "rb");
+	ft_rb(head_a, head_b);
+	ft_print_stacks(*head_a, *head_b);//
+}
+
+void	ft_run_ra(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b)
 {
 	ft_add_command(&srt_data->cm, "ra");
 	ft_ra(head_a, head_b);
+	ft_print_stacks(*head_a, *head_b);//
 }
 
-static void	run_rr(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b)
+void	ft_run_rr(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b)
 {
 	ft_add_command(&srt_data->cm, "rr");
 	ft_rr(head_a, head_b);
+	ft_print_stacks(*head_a, *head_b);//
 }
 
 static int rr_ability(t_ls *head_a, t_ls *head_b)
@@ -27,9 +36,9 @@ int	ft_check_rr(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b)
 		return (0);
 	if ((rr_ability(*head_a, *head_b)) == 1)
 	{
-		run_rr(srt_data, head_a, head_b);
+		ft_run_rr(srt_data, head_a, head_b);
 		return (1);
 	}
-	run_ra(srt_data, head_a, head_b);
+	ft_run_ra(srt_data, head_a, head_b);
 	return (0);
 }

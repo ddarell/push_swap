@@ -70,7 +70,7 @@ void	ft_generate_commands(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b)
 	}
 	while (srt_data->nsrt_els_a)
 	{
-		ft_print_stacks(*head_a, *head_b);
+//		ft_print_stacks(*head_a, *head_b);
 		if ((ft_check_pa(srt_data, head_a, head_b)) == 1)
 			continue;
 		else if ((ft_check_pb(srt_data, head_a, head_b)) == 1)
@@ -80,9 +80,10 @@ void	ft_generate_commands(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b)
 //		if (ft_bit_check(&(*head_a)->fl, SWAP))
 //			check_swap_nodes(srt_data, head_a, head_b);
 	}
-/*	while (srt_data->b_els)
+	while (srt_data->b_els)
 	{
-		ft_insert_srt(srt_data, head_a, head_b);
-	}*/
-	ft_print_stacks(*head_a, *head_b);
+// 		ft_print_stacks(*head_a, *head_b);
+		ft_insert(srt_data, head_a, head_b);
+	}
+//	ft_print_stacks(*head_a, *head_b);
 }
