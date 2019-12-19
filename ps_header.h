@@ -53,7 +53,8 @@ typedef	struct	s_srt_data
 	int 		sma_a; //smallest order in a
 	int			sma_b; //smallest order in b
 	int 		big_a; //biggest order in a
-	int 		big_b; //biggest order in b
+	int 		big_b;//biggest order in b
+	int 		ins_of;
 }				t_srt_data;
 
 void			ft_error(void);

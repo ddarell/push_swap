@@ -39,4 +39,5 @@ void	ft_set_srt_data(t_srt_data *srt_data, t_ls *head_a)
 	srt_data->sma_b = srt_data->a_els;
 	srt_data->big_a = 0;
 	srt_data->big_b = 0;
+	srt_data->ins_of = 0;
 }
