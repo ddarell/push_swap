@@ -1,19 +1,41 @@
 #include "ps_header.h"
 
+static void	set_each_point_limited(t_ls	*dup)
+{
+	t_ls *cur;
+	t_ls *run;
+
+	dup->fl = 0;
+	dup->prev->fl = 0;
+
+	cur = dup->next;
+	while (cur != dup->prev)
+	{
+		run = cur;
+		while (run != dup)
+		{
+			if (run->numb < cur->numb)
+				cur->fl += 1;
+			run = run->next;
+		}
+		cur = cur->next;
+	}
+}
+
 static void	match_sorted_numbers(t_ls *top, int *tab)
 {
 	t_ls *tmp;
 
 	while (*tab)
 	{
-		tmp = ft_search_ls(top, *tab);
+		tmp = ft_search_ls_num(top, *tab);
 		if (tmp)
 			ft_bit_on(&tmp->fl, ORD);
 		tab++;
 	}
 }
 
-static int find_data_sorted(t_ls *top, int *data)
+static int find_data_sorted(t_ls *top, int *data, int *max_lim)
 {
 	int i;
 	t_ls *tmp;
@@ -21,12 +43,14 @@ static int find_data_sorted(t_ls *top, int *data)
 	i = 0;
 	data[i] = top->numb;
 	tmp = top->next;
+	*max_lim = 0;
 	while (tmp != top)
 	{
 		if (data[i] < tmp->numb)
 		{
 			i++;
 			data[i] = tmp->numb;
+			*max_lim = (*max_lim < tmp->fl) ? tmp->fl : *max_lim;
 		}
 		tmp = tmp->next;
 	}
@@ -35,14 +59,20 @@ static int find_data_sorted(t_ls *top, int *data)
 	return (i);
 }
 
-static int remove_next_extr(t_ls **top)
+static int remove_next_extr(t_ls **top, int max_lim)
 {
 	t_ls *tmp;
 
-	if (!(*top))
+	if (!max_lim)
 		return (0);
-	tmp = (*top)->next;
-	while (tmp != *top)
+//	tmp = (*top)->next;
+	while ((tmp = ft_search_ls_fl(*top, max_lim)))
+	{
+		tmp = ft_remove_node(top, tmp);
+		free(tmp);
+		tmp = NULL;
+	}
+/*	while (tmp != *top)
 	{
 		if (tmp->numb != (*top)->numb && tmp->numb != (*top)->prev->numb
 			&& tmp->numb > tmp->prev->numb && tmp->numb > tmp->next->numb)
@@ -54,39 +84,42 @@ static int remove_next_extr(t_ls **top)
 		}
 		tmp = tmp->next;
 	}
-	return (0);
+	return (0);*/
+	return (1);
 }
 
-void ft_detect_sorted_data(t_srt_data *srt_data, t_ls *top, t_ls **dup)
+void ft_detect_sorted_data(t_sr *sr, t_ls *top, t_ls **dup)
 {
 	int *tmp;
 	int curr;
+	int max_lim;
 
-	if (!(tmp = (int *)malloc(sizeof(int) * srt_data->a_els + 1)))
+	if (!(tmp = (int *)malloc(sizeof(int) * sr->a_els + 1)))
 		ft_error();
-	*dup = ft_search_ls(*dup, 1);
+	*dup = ft_search_ls_num(*dup, 1);
 	*tmp = 0;
-	curr = find_data_sorted(*dup, srt_data->sorted);
+	set_each_point_limited(*dup);
+	curr = find_data_sorted(*dup, sr->sorted, &max_lim);
 	int i = -1;//
-/*	while (srt_data->sorted[++i])//
-		ft_printf("__%d__", srt_data->sorted[i]);//
+/*	while (sr->sorted[++i])//
+		ft_printf("__%d__", sr->sorted[i]);//
 	ft_printf("\n_______________________________\n");//*/
-	while (remove_next_extr(dup))
+	while (remove_next_extr(dup, max_lim))
 	{
-		if ((find_data_sorted(*dup, tmp)) >= curr)
-		{
-			curr = ft_int_tab_copy(srt_data->sorted, tmp);
-		}
-/*		i = -1;//
+		if ((find_data_sorted(*dup, tmp, &max_lim)) >= curr)
+			curr = ft_int_tab_copy(sr->sorted, tmp);
+		i = -1;//
+//		ft_print_stack(*dup);//
+		ft_printf("\n");
 		while (tmp[++i])//
 			ft_printf("__%d__", tmp[i]);//
-		ft_printf("\n_______________________________\n");//*/
+		ft_printf("\n_______________________________\n");//
 	}
 /*	i = -1;
-	while (srt_data->sorted[++i])//
-		ft_printf("__%d__", srt_data->sorted[i]);//
+	while (sr->sorted[++i])//
+		ft_printf("__%d__", sr->sorted[i]);//
 	ft_printf("\n_______________________________\n");//*/
-	match_sorted_numbers(top, srt_data->sorted);
-	srt_data->srt_els_a = curr;
+	match_sorted_numbers(top, sr->sorted);
+	sr->srt_els_a = curr;
 	free(tmp);
 }

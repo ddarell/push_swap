@@ -4,7 +4,7 @@ int			main(int ac, char **av)
 {
 	t_ls *head_a;
 	t_ls *head_b;
-	t_srt_data	srt_data;
+	t_sr	srt_data;
 
 	head_a = NULL;
 	head_b = NULL;

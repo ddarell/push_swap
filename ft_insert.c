@@ -1,28 +1,28 @@
 #include "ps_header.h"
 
-static void	run_operations(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b, t_ins *ins)
+static void	run_operations(t_sr *sr, t_ls **head_a, t_ls **head_b)
 {
 	int i;
 
 	i = 0;
-	while (++i <= ins->rr)
-		ft_run_rr(srt_data, head_a, head_b);
+	while (++i <= sr->ins.rr)
+		ft_run_rr(sr, head_a, head_b);
 	i = 0;
-	while (++i <= ins->ra)
-		ft_run_ra(srt_data, head_a, head_b);
+	while (++i <= sr->ins.ra)
+		ft_run_ra(sr, head_a, head_b);
 	i = 0;
-	while (++i <= ins->rb)
-		ft_run_rb(srt_data, head_a, head_b);
+	while (++i <= sr->ins.rb)
+		ft_run_rb(sr, head_a, head_b);
 	i = 0;
-	while (++i <= ins->rrr)
-		ft_run_rrr(srt_data, head_a, head_b);
+	while (++i <= sr->ins.rrr)
+		ft_run_rrr(sr, head_a, head_b);
 	i = 0;
-	while (++i <= ins->rra)
-		ft_run_rra(srt_data, head_a, head_b);
+	while (++i <= sr->ins.rra)
+		ft_run_rra(sr, head_a, head_b);
 	i = 0;
-	while (++i <= ins->rrb)
-		ft_run_rrb(srt_data, head_a, head_b);
-	ft_check_pa(srt_data, head_a, head_b);
+	while (++i <= sr->ins.rrb)
+		ft_run_rrb(sr, head_a, head_b);
+	ft_check_pa(sr, head_a, head_b);
 }
 
 static void	set_rr_rrr(t_ins *ins, int flag)
@@ -52,16 +52,18 @@ static void	set_rr_rrr(t_ins *ins, int flag)
 }
 
 static void	count_operations(t_ins *ins)
-{	int ops[4];
+{
 	int flag;
 
-	ins->rr = 0;
-	ins->rrr = 0;
-	ops[0] = ft_max(ins->ra, ins->rb);
-	ops[1] = ft_max(ins->rra, ins->rrb);
-	ops[2] = ins->ra + ins->rrb;
-	ops[3] = ins->rra + ins->rb;
-	flag = ft_search_int_tab(ops, 4, ft_seach_min_int(ops, 4));
+	flag = -1;
+	if (ins->ops == ft_max(ins->ra, ins->rb))
+		flag = 0;
+	else if (ins->ops == ft_max(ins->rra, ins->rrb))
+		flag = 1;
+	else if (ins->ops == ins->ra + ins->rrb)
+		flag = 2;
+	else if (ins->ops == ins->rra + ins->rb)
+		flag = 3;
 	if (flag == 0 || flag == 1)
 		set_rr_rrr(ins, flag);
 	else if (flag == 2)
@@ -76,37 +78,15 @@ static void	count_operations(t_ins *ins)
 	}
 }
 
-static void	count_b_stack_offset(t_ls *head_b, t_ls *insert_b, t_srt_data *srt_data, t_ins *ins)
+void	ft_insert(t_sr *sr, t_ls **head_a, t_ls **head_b)
 {
-	t_ls *prev;
-	t_ls *next;
-
-	srt_data->ins_of = 0;
-	prev = head_b;
-	next = head_b;
-	while (prev != insert_b && next != insert_b)
-	{
-		next = next->next;
-		prev = prev->prev;
-		srt_data->ins_of += 1;
-	}
-	ins->rb = (next == insert_b) ? srt_data->ins_of : srt_data->b_els - srt_data->ins_of;
-	ins->rrb = srt_data->b_els - ins->rb;
-}
-
-void	ft_insert(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b)
-{
-	t_ls *insert_a;
-	t_ls *insert_b;
-	t_ins ins;
-
-	ft_find_insert(srt_data, *head_a, *head_b, &insert_b);
-	insert_a = ft_search_a_push_space(*head_a, insert_b, &ins, srt_data);
-	ft_bit_on(&insert_a->fl, INS);
-	ft_bit_on(&insert_b->fl, INS);
-	count_b_stack_offset(*head_b, insert_b, srt_data, &ins);
-	count_operations(&ins);
-	run_operations(srt_data, head_a, head_b, &ins);
-	ft_bit_off(&insert_a->fl, INS);
-	ft_bit_off(&insert_b->fl, INS);
+	ft_set_ins(&sr->ins);
+	ft_find_closest_insert(sr, *head_a, *head_b);
+	ft_bit_on(&sr->ins.ins_a->fl, INS);
+	ft_bit_on(&sr->ins.ins_b->fl, INS);
+	ft_print_stacks(*head_a, *head_b);
+	count_operations(&sr->ins);
+	run_operations(sr, head_a, head_b);
+	ft_bit_off(&sr->ins.ins_a->fl, INS);
+	ft_bit_off(&sr->ins.ins_b->fl, INS);
 }

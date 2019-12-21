@@ -1,14 +1,14 @@
 #include "ps_header.h"
 
-void	ft_init_elem_ord(t_srt_data *srt_data, t_ls *head_a)
+void	ft_init_elem_ord(t_sr *sr, t_ls *head_a)
 {
 	int		i;
 	t_ls	*tmp;
 
 	tmp = head_a->next;
 	i = -1;
-	while (++i < srt_data->a_els)
-		if (srt_data->sorted[i] == head_a->numb)
+	while (++i < sr->a_els)
+		if (sr->sorted[i] == head_a->numb)
 		{
 			head_a->numb = i + 1;
 			break ;
@@ -16,8 +16,8 @@ void	ft_init_elem_ord(t_srt_data *srt_data, t_ls *head_a)
 	while (tmp != head_a)
 	{
 		i = -1;
-		while (++i < srt_data->a_els)
-			if (srt_data->sorted[i] == tmp->numb)
+		while (++i < sr->a_els)
+			if (sr->sorted[i] == tmp->numb)
 			{
 				tmp->numb = i + 1;
 				break ;
@@ -26,36 +26,36 @@ void	ft_init_elem_ord(t_srt_data *srt_data, t_ls *head_a)
 	}
 }
 
-void	ft_sort_array(t_srt_data *srt_data)
+void	ft_sort_array(t_sr *sr)
 {
 	int *tmp_min;
 	int i;
 	int j;
 
 	i = 0;
-	while (i < srt_data->a_els)
+	while (i < sr->a_els)
 	{
 		j = i;
-		tmp_min = srt_data->sorted + i;
-		while (j < srt_data->a_els)
+		tmp_min = sr->sorted + i;
+		while (j < sr->a_els)
 		{
-			if (srt_data->sorted[j] < *tmp_min)
-				tmp_min = srt_data->sorted + j;
+			if (sr->sorted[j] < *tmp_min)
+				tmp_min = sr->sorted + j;
 			j++;
 		}
-		ft_int_swap(srt_data->sorted + i, tmp_min);
+		ft_int_swap(sr->sorted + i, tmp_min);
 		i++;
 	}
 }
 
-void	ft_fill_array(t_srt_data *srt_data, t_ls *head_a)
+void	ft_fill_array(t_sr *sr, t_ls *head_a)
 {
 	int i;
 
 	i = 0;
-	while (i < srt_data->a_els)
+	while (i < sr->a_els)
 	{
-		srt_data->sorted[i] = head_a->numb;
+		sr->sorted[i] = head_a->numb;
 		i++;
 		head_a = head_a->next;
 	}

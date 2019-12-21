@@ -27,17 +27,29 @@ void	ft_set_commands(void (**command)(t_ls **, t_ls **))
 	command[10] = &ft_rrr;
 }
 
-void	ft_set_srt_data(t_srt_data *srt_data, t_ls *head_a)
+void	ft_set_ins(t_ins *ins)
 {
-	srt_data->a_els = ft_count_ls(head_a);
-	srt_data->b_els = 0;
-	srt_data->srt_els_a = 0;
-	srt_data->nsrt_els_a = 0;
-	srt_data->cm = NULL;
-	srt_data->sorted = NULL;
-	srt_data->sma_a = 1;
-	srt_data->sma_b = srt_data->a_els;
-	srt_data->big_a = 0;
-	srt_data->big_b = 0;
-	srt_data->ins_of = 0;
+	ins->ins_a = NULL;
+	ins->ins_b = NULL;
+	ins->ra = 0;
+	ins->rra = 0;
+	ins->rb = 0;
+	ins->rrb = 0;
+	ins->rr = 0;
+	ins->rrr = 0;
+	ins->ops = 0;
+	ins->ofs = 0;
+//	ins->flg = 0;
+}
+
+void	ft_set_srt_data(t_sr *sr, t_ls *head_a)
+{
+	sr->a_els = ft_count_ls(head_a);
+	sr->b_els = 0;
+	sr->srt_els_a = 0;
+	sr->nsrt_els_a = 0;
+	sr->cm = NULL;
+	sr->sorted = NULL;
+	ft_set_ins(&sr->ins);
+	sr->ops = 0;
 }

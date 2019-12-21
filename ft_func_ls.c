@@ -92,13 +92,11 @@ t_ls *ft_dup_ls(t_ls *dst, t_ls *src)
 	if (!(src))
 		return (NULL);
 	node = ft_new_node(src->numb);
-//	node->ord = src->ord;
 	ft_add_node_back(&dst, node);
 	tmp = src->next;
 	while (tmp != src)
 	{
 		node = ft_new_node(tmp->numb);
-//		node->ord = tmp->ord;
 		ft_add_node_back(&dst, node);
 		tmp = tmp->next;
 	}

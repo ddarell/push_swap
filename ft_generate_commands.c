@@ -1,89 +1,77 @@
 #include "ps_header.h"
-
-static void set_direction(t_srt_data *srt_data, t_ls *head_a)
+/*
+static void set_direction(t_sr *sr, t_ls *head_a)
 {
 	t_ls	*tmp;
-	t_ls	*point;
-	int		min;
-	int		curr;
+	t_ls	*last_nsrt;
+	int		nord_counter;
 	int 	i;
 
-	i = 0;
+	i = -1;
+	nord_counter = 0;
 	tmp = head_a;
-//	curr = ft_count_path(srt_data, head_a, tmp);
-	curr = 0;//
-	min = curr;
-	tmp = head_a->prev;
-	point = tmp;
-	while (i < srt_data->nsrt_els_a)
+	while(++i <= sr->a_els / 2)
 	{
-		tmp = tmp->prev;
+		tmp = tmp->next;
 		if (!(ft_bit_check(tmp->fl, ORD)))
-		{
-			i++;
-//			if (ft_bit_check(tmp->prev->fl, ORD))
-//				curr = ft_count_path(srt_data, head_a, tmp);
-			if (curr < min)
-			{
-				curr = min;
-				point = tmp;
-			}
-		}
+			nord_counter += 1;
 	}
-//	ft_bit_on(&point->fl, LDIR);
-	ft_bit_on(&head_a->fl, LDIR);
+	if (!(nord_counter))
+		ft_bit_on(&tmp->next->fl, LDIR);
+	else
+		ft_bit_on(&head_a->fl, LDIR);
 }
-
-static void check_sorted_data(t_srt_data *srt_data, t_ls *head_a)
+*/
+static void check_sorted_data(t_sr *sr, t_ls *head_a)
 {
 	t_ls	*head_a_dup;
 
 	head_a_dup = NULL;
-	if (!(srt_data->sorted = (int *)malloc(sizeof(int) * srt_data->a_els + 1)))
+	if (!(sr->sorted = (int *)malloc(sizeof(int) * sr->a_els + 1)))
 		ft_error();
-	ft_fill_array(srt_data, head_a);
-	ft_sort_array(srt_data);
-	ft_init_elem_ord(srt_data, head_a);
+	ft_fill_array(sr, head_a);
+	ft_sort_array(sr);
+	ft_init_elem_ord(sr, head_a);
 	head_a_dup = ft_dup_ls(head_a_dup, head_a);
-	ft_detect_sorted_data(srt_data, head_a, &head_a_dup);
-	srt_data->nsrt_els_a = srt_data->a_els - srt_data->srt_els_a;
+	ft_detect_sorted_data(sr, head_a, &head_a_dup);
+	sr->nsrt_els_a = sr->a_els - sr->srt_els_a;
 	ft_free_ls(&head_a_dup);
-//	free(srt_data->sorted);
-//	srt_data->sorted = NULL;
+	free(sr->sorted);
+	sr->sorted = NULL;
 }
 
-void	ft_generate_commands(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b)
+void	ft_generate_commands(t_sr *sr, t_ls **head_a, t_ls **head_b)
 {
-	check_sorted_data(srt_data, *head_a);
-	set_direction(srt_data, *head_a);
-//	match_what_swap(srt_data, *head_a);
-	while (!(ft_bit_check((*head_a)->fl, LDIR)))
+	check_sorted_data(sr, *head_a);
+//	set_direction(sr, *head_a);
+//	match_what_swap(sr, *head_a);
+/*	while (!(ft_bit_check((*head_a)->fl, LDIR)))
 	{
-		if ((ft_check_pa(srt_data, head_a, head_b)) == 1)
+		if ((ft_check_pa(sr, head_a, head_b)) == 1)
 			continue;
-		else if ((ft_check_pb(srt_data, head_a, head_b)) == 1)
+		else if ((ft_check_pb(sr, head_a, head_b)) == 1)
 			continue;
 		else
-			ft_check_rrr(srt_data, head_a, head_b);
+			ft_check_rrr(sr, head_a, head_b);
 //		if (ft_bit_check(&(*head_a)->fl, SWAP))
-//			check_swap_nodes(srt_data, head_a, head_b);
-	}
-	while (srt_data->nsrt_els_a)
+//			check_swap_nodes(sr, head_a, head_b);
+	}*/
+	while (sr->nsrt_els_a)
 	{
 //		ft_print_stacks(*head_a, *head_b);
-		if ((ft_check_pa(srt_data, head_a, head_b)) == 1)
+		if ((ft_check_sa(sr, head_a, head_b)) == 1)
 			continue;
-		else if ((ft_check_pb(srt_data, head_a, head_b)) == 1)
+		if ((ft_check_pa(sr, head_a, head_b)) == 1)
+			continue;
+		else if ((ft_check_pb(sr, head_a, head_b)) == 1)
 			continue;
 		else
-			ft_check_rr(srt_data, head_a, head_b);
+			ft_check_rr(sr, head_a, head_b);
 //		if (ft_bit_check(&(*head_a)->fl, SWAP))
-//			check_swap_nodes(srt_data, head_a, head_b);
+//			check_swap_nodes(sr, head_a, head_b);
 	}
-	while (srt_data->b_els)
-	{
-// 		ft_print_stacks(*head_a, *head_b);
-		ft_insert(srt_data, head_a, head_b);
-	}
-//	ft_print_stacks(*head_a, *head_b);
+	while (sr->b_els)
+		ft_insert(sr, head_a, head_b);
+	ft_finish_sort(sr, head_a, head_b);
+	ft_print_stacks(*head_a, *head_b);
 }

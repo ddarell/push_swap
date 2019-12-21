@@ -19,46 +19,44 @@
 # define LDIR 1
 # define INS 2
 
-typedef	struct	s_ins
+typedef	struct	s_ls
 {
+	struct s_ls	*next;
+	struct s_ls	*prev;
+	int			numb;
+	int 		fl;
+}				t_ls;
+
+typedef	struct	s_ins
+{	t_ls		*ins_a;
+	t_ls		*ins_b;
 	int			ra;
 	int 		rra;
 	int 		rb;
 	int 		rrb;
 	int			rr;
 	int 		rrr;
+	int 		ops;
+	int 		ofs;
 }				t_ins;
-
-typedef	struct	s_ls
-{
-	struct s_ls	*next;
-	struct s_ls	*prev;
-	int			numb;
-//	int 		ord;
-	int 		fl;
-}				t_ls;
 
 typedef	struct	s_cm
 {
 	struct s_cm	*next;
-//	struct s_cm	*prev;
 	char cmd[4];
 }				t_cm;
 
-typedef	struct	s_srt_data
+typedef	struct	s_sr
 {
 	t_cm		*cm;
-	int 		a_els; //number of elmnts in a stack
-	int 		b_els; //number of elmnts in b stack
+	int 		a_els;
+	int 		b_els;
 	int 		srt_els_a;
 	int			nsrt_els_a;
 	int 		*sorted;
-	int 		sma_a; //smallest order in a
-	int			sma_b; //smallest order in b
-	int 		big_a; //biggest order in a
-	int 		big_b;//biggest order in b
-	int 		ins_of;
-}				t_srt_data;
+	t_ins		ins;
+	int 		ops;
+}				t_sr;
 
 void			ft_error(void);
 
@@ -88,43 +86,47 @@ int				ft_check_sort(t_ls *top);
 void			ft_free_ls(t_ls **top);
 
 
-void			ft_set_srt_data(t_srt_data *srt_data, t_ls *head_a);
+void			ft_set_srt_data(t_sr *sr, t_ls *head_a);
+void			ft_set_ins(t_ins *ins);
 
 int				ft_count_ls(t_ls *head_a);
-void			ft_fill_array(t_srt_data *srt_data, t_ls *head_a);
-void			ft_sort_array(t_srt_data *srt_data);
-void			ft_init_elem_ord(t_srt_data *srt_data, t_ls *head_a);
-void ft_detect_sorted_data(t_srt_data *srt_data, t_ls *top, t_ls **dup);
+void			ft_fill_array(t_sr *sr, t_ls *head_a);
+void			ft_sort_array(t_sr *sr);
+void			ft_init_elem_ord(t_sr *sr, t_ls *head_a);
+void			ft_detect_sorted_data(t_sr *sr, t_ls *top, t_ls **dup);
 
-//int	ft_find_int_tab(int *tab, int num);
-//void	ft_add_int_tab(int *tab, t_ls *node, t_ls *top);
-int	ft_int_tab_copy(int *dst, int *src);
-t_ls *ft_dup_ls(t_ls *dst, t_ls *src);
-t_ls	*ft_search_ls(t_ls *top, int num);
+//int			ft_find_int_tab(int *tab, int num);
+//void			ft_add_int_tab(int *tab, t_ls *node, t_ls *top);
+int				ft_int_tab_copy(int *dst, int *src);
+t_ls			*ft_dup_ls(t_ls *dst, t_ls *src);
+t_ls			*ft_search_ls_num(t_ls *top, int num);
+t_ls			*ft_search_ls_fl(t_ls *top, int fl);
 
-void	ft_generate_commands(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b);
+void			ft_generate_commands(t_sr *sr, t_ls **head_a, t_ls **head_b);
 
-int	ft_check_pa(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b);
-int ft_pa_ability(t_ls *head_a, t_ls *head_b);
+int				ft_check_pa(t_sr *sr, t_ls **head_a, t_ls **head_b);
+int				ft_pa_ability(t_ls *head_a, t_ls *head_b);
 
-//int		ft_check_pa(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b);
-void	ft_add_command(t_cm **cm, char *str);
-int	ft_check_pb(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b);
-int	ft_check_rr(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b);
-int	ft_check_rrr(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b);
+//int			ft_check_pa(t_sr *srt_data, t_ls **head_a, t_ls **head_b);
+void			ft_add_command(t_cm **cm, char *str);
+int				ft_check_pb(t_sr *sr, t_ls **head_a, t_ls **head_b);
+int				ft_check_rr(t_sr *sr, t_ls **head_a, t_ls **head_b);
+int				ft_check_rrr(t_sr *sr, t_ls **head_a, t_ls **head_b);
+int				ft_check_sa(t_sr *sr, t_ls **head_a, t_ls **head_b);
 
-void ft_insert(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b);
-int	ft_find_insert(t_srt_data *srt_data, t_ls *head_a, t_ls *head_b, t_ls **insert_purpose);
-t_ls	*ft_search_a_push_space(t_ls *head_a, t_ls *insert_b, t_ins *ins, t_srt_data *srt_data);
+void			ft_insert(t_sr *sr, t_ls **head_a, t_ls **head_b);
+int				ft_find_closest_insert(t_sr *sr, t_ls *head_a, t_ls *head_b);
+t_ls			*ft_search_a_push_space(t_ls *head_a, t_sr *sr);
 
-void	ft_run_ra(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b);
-void	ft_run_rb(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b);
-void	ft_run_rr(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b);
-void	ft_run_rra(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b);
-void	ft_run_rrb(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b);
-void	ft_run_rrr(t_srt_data *srt_data, t_ls **head_a, t_ls **head_b);
+void			ft_run_ra(t_sr *sr, t_ls **head_a, t_ls **head_b);
+void			ft_run_rb(t_sr *sr, t_ls **head_a, t_ls **head_b);
+void			ft_run_rr(t_sr *sr, t_ls **head_a, t_ls **head_b);
+void			ft_run_rra(t_sr *sr, t_ls **head_a, t_ls **head_b);
+void			ft_run_rrb(t_sr *sr, t_ls **head_a, t_ls **head_b);
+void			ft_run_rrr(t_sr *sr, t_ls **head_a, t_ls **head_b);
+void			ft_finish_sort(t_sr *sr, t_ls **head_a, t_ls **head_b);
 
 void			ft_print_stack(t_ls	*top);
-void	ft_print_stacks(t_ls *head_a, t_ls *head_b);
+void			ft_print_stacks(t_ls *head_a, t_ls *head_b);
 
 #endif
