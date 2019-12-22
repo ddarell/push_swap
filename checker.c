@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker_main.c                                     :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddarell <ddarell@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 23:35:01 by ddarell           #+#    #+#             */
-/*   Updated: 2019/12/11 23:35:42 by ddarell          ###   ########.fr       */
+/*   Updated: 2019/12/21 23:19:30 by ddarell          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,7 @@ static void	read_exec_commands(t_ls **head_a, t_ls **head_b)
 
 	ft_set_commands(command);
 	while ((ft_get_next_command(0, cmd)) > 0)
-	{
 		command[check_command(cmd)](head_a, head_b);
-		ft_printf("\n\n=========\n");//
-		ft_print_stack(*head_a);//
-		ft_printf("\n");//
-		ft_print_stack(*head_b);//
-		ft_printf("=========\n");//
-	}
 }
 
 int			main(int ac, char **av)
@@ -74,11 +67,9 @@ int			main(int ac, char **av)
 	if (ac < 2)
 		return (0);
 	ft_fill_stack_a(&head_a, av, ac);
-	ft_print_stack(head_a);//
 	if (!(head_a))
 		return (0);
 	read_exec_commands(&head_a, &head_b);
-	ft_printf("\n");//
 	if (head_b == NULL && ft_check_sort(head_a))
 		ft_printf("OK\n");
 	else

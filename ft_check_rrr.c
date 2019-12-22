@@ -5,7 +5,7 @@ void	ft_run_rrb(t_sr *sr, t_ls **head_a, t_ls **head_b)
 	ft_add_command(&sr->cm, "rrb");
 	ft_rrb(head_a, head_b);
 	sr->ops += 1;
-	ft_print_stacks(*head_a, *head_b);//
+//	ft_print_stacks(*head_a, *head_b);//
 }
 
 void	ft_run_rra(t_sr *sr, t_ls **head_a, t_ls **head_b)
@@ -13,7 +13,7 @@ void	ft_run_rra(t_sr *sr, t_ls **head_a, t_ls **head_b)
 	ft_add_command(&sr->cm, "rra");
 	ft_rra(head_a, head_b);
 	sr->ops += 1;
-	ft_print_stacks(*head_a, *head_b);//
+//	ft_print_stacks(*head_a, *head_b);//
 }
 
 void	ft_run_rrr(t_sr *sr, t_ls **head_a, t_ls **head_b)
@@ -21,7 +21,7 @@ void	ft_run_rrr(t_sr *sr, t_ls **head_a, t_ls **head_b)
 	ft_add_command(&sr->cm, "rrr");
 	ft_rrr(head_a, head_b);
 	sr->ops += 1;
-	ft_print_stacks(*head_a, *head_b);//
+//	ft_print_stacks(*head_a, *head_b);//
 }
 
 static int rrr_ability(t_ls *head_a, t_ls *head_b)

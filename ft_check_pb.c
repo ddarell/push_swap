@@ -8,7 +8,7 @@ static void	run_pb(t_sr *sr, t_ls **head_a, t_ls **head_b)
 	sr->a_els -= 1;
 	sr->b_els += 1;
 	sr->nsrt_els_a -= 1;
-	ft_print_stacks(*head_a, *head_b);//
+//	ft_print_stacks(*head_a, *head_b);//
 }
 
 static int	pb_ability(t_ls *head_a)

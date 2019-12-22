@@ -84,7 +84,7 @@ void	ft_insert(t_sr *sr, t_ls **head_a, t_ls **head_b)
 	ft_find_closest_insert(sr, *head_a, *head_b);
 	ft_bit_on(&sr->ins.ins_a->fl, INS);
 	ft_bit_on(&sr->ins.ins_b->fl, INS);
-	ft_print_stacks(*head_a, *head_b);
+//	ft_print_stacks(*head_a, *head_b);//
 	count_operations(&sr->ins);
 	run_operations(sr, head_a, head_b);
 	ft_bit_off(&sr->ins.ins_a->fl, INS);

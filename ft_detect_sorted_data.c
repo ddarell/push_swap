@@ -65,26 +65,12 @@ static int remove_next_extr(t_ls **top, int max_lim)
 
 	if (!max_lim)
 		return (0);
-//	tmp = (*top)->next;
 	while ((tmp = ft_search_ls_fl(*top, max_lim)))
 	{
 		tmp = ft_remove_node(top, tmp);
 		free(tmp);
 		tmp = NULL;
 	}
-/*	while (tmp != *top)
-	{
-		if (tmp->numb != (*top)->numb && tmp->numb != (*top)->prev->numb
-			&& tmp->numb > tmp->prev->numb && tmp->numb > tmp->next->numb)
-		{
-			tmp = ft_remove_node(top, tmp);
-			free(tmp);
-			tmp = NULL;
-			return (1);
-		}
-		tmp = tmp->next;
-	}
-	return (0);*/
 	return (1);
 }
 
@@ -100,25 +86,11 @@ void ft_detect_sorted_data(t_sr *sr, t_ls *top, t_ls **dup)
 	*tmp = 0;
 	set_each_point_limited(*dup);
 	curr = find_data_sorted(*dup, sr->sorted, &max_lim);
-	int i = -1;//
-/*	while (sr->sorted[++i])//
-		ft_printf("__%d__", sr->sorted[i]);//
-	ft_printf("\n_______________________________\n");//*/
 	while (remove_next_extr(dup, max_lim))
 	{
 		if ((find_data_sorted(*dup, tmp, &max_lim)) >= curr)
 			curr = ft_int_tab_copy(sr->sorted, tmp);
-		i = -1;//
-//		ft_print_stack(*dup);//
-		ft_printf("\n");
-		while (tmp[++i])//
-			ft_printf("__%d__", tmp[i]);//
-		ft_printf("\n_______________________________\n");//
 	}
-/*	i = -1;
-	while (sr->sorted[++i])//
-		ft_printf("__%d__", sr->sorted[i]);//
-	ft_printf("\n_______________________________\n");//*/
 	match_sorted_numbers(top, sr->sorted);
 	sr->srt_els_a = curr;
 	free(tmp);

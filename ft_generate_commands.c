@@ -44,7 +44,6 @@ void	ft_generate_commands(t_sr *sr, t_ls **head_a, t_ls **head_b)
 {
 	check_sorted_data(sr, *head_a);
 //	set_direction(sr, *head_a);
-//	match_what_swap(sr, *head_a);
 /*	while (!(ft_bit_check((*head_a)->fl, LDIR)))
 	{
 		if ((ft_check_pa(sr, head_a, head_b)) == 1)
@@ -58,7 +57,6 @@ void	ft_generate_commands(t_sr *sr, t_ls **head_a, t_ls **head_b)
 	}*/
 	while (sr->nsrt_els_a)
 	{
-//		ft_print_stacks(*head_a, *head_b);
 		if ((ft_check_sa(sr, head_a, head_b)) == 1)
 			continue;
 		if ((ft_check_pa(sr, head_a, head_b)) == 1)
@@ -67,11 +65,9 @@ void	ft_generate_commands(t_sr *sr, t_ls **head_a, t_ls **head_b)
 			continue;
 		else
 			ft_check_rr(sr, head_a, head_b);
-//		if (ft_bit_check(&(*head_a)->fl, SWAP))
-//			check_swap_nodes(sr, head_a, head_b);
 	}
 	while (sr->b_els)
 		ft_insert(sr, head_a, head_b);
 	ft_finish_sort(sr, head_a, head_b);
-	ft_print_stacks(*head_a, *head_b);
+	//ft_print_stacks(*head_a, *head_b);//
 }

@@ -9,7 +9,7 @@ static void	run_sa(t_sr *sr, t_ls **head_a, t_ls **head_b)
 	sr->nsrt_els_a -= 1;
 	ft_bit_on(&(*head_a)->fl, ORD);
 	ft_bit_on(&(*head_a)->next->fl, ORD);
-	ft_print_stacks(*head_a, *head_b);//
+//	ft_print_stacks(*head_a, *head_b);//
 }
 
 t_ls	*find_srt_pair(t_ls *pair, int *delta)
@@ -81,7 +81,7 @@ int	ft_check_sa(t_sr *sr, t_ls **head_a, t_ls **head_b)
 	}
 	ft_bit_on(&(*head_a)->next->fl, INS);
 	ft_bit_on(&(*head_a)->fl, INS);
-	ft_print_stacks(*head_a, *head_b);
+//	ft_print_stacks(*head_a, *head_b);
 	run_sa(sr, head_a, head_b);
 	ft_bit_off(&(*head_a)->next->fl, INS);
 	ft_bit_off(&(*head_a)->fl, INS);
