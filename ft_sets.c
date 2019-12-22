@@ -6,7 +6,7 @@
 /*   By: ddarell <ddarell@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 23:30:28 by ddarell           #+#    #+#             */
-/*   Updated: 2019/12/11 23:30:29 by ddarell          ###   ########.fr       */
+/*   Updated: 2019/12/22 23:22:36 by ddarell          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	ft_set_ins(t_ins *ins)
 	ins->rrr = 0;
 	ins->ops = 0;
 	ins->ofs = 0;
-//	ins->flg = 0;
 }
 
 void	ft_set_srt_data(t_sr *sr, t_ls *head_a)

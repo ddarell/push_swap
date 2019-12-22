@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.h                                          :+:      :+:    :+:   */
+/*   ps_header.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddarell <ddarell@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 23:33:44 by ddarell           #+#    #+#             */
-/*   Updated: 2019/12/11 23:39:01 by ddarell          ###   ########.fr       */
+/*   Updated: 2019/12/22 23:21:17 by ddarell          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,38 +24,38 @@ typedef	struct	s_ls
 	struct s_ls	*next;
 	struct s_ls	*prev;
 	int			numb;
-	int 		fl;
+	int			fl;
 }				t_ls;
 
 typedef	struct	s_ins
 {	t_ls		*ins_a;
 	t_ls		*ins_b;
 	int			ra;
-	int 		rra;
-	int 		rb;
-	int 		rrb;
+	int			rra;
+	int			rb;
+	int			rrb;
 	int			rr;
-	int 		rrr;
-	int 		ops;
-	int 		ofs;
+	int			rrr;
+	int			ops;
+	int			ofs;
 }				t_ins;
 
 typedef	struct	s_cm
 {
 	struct s_cm	*next;
-	char cmd[4];
+	char		cmd[4];
 }				t_cm;
 
 typedef	struct	s_sr
 {
 	t_cm		*cm;
-	int 		a_els;
-	int 		b_els;
-	int 		srt_els_a;
+	int			a_els;
+	int			b_els;
+	int			srt_els_a;
 	int			nsrt_els_a;
-	int 		*sorted;
+	int			*sorted;
 	t_ins		ins;
-	int 		ops;
+	int			ops;
 }				t_sr;
 
 void			ft_error(void);
@@ -84,7 +84,6 @@ void			ft_rrr(t_ls **head_a, t_ls **head_b);
 void			ft_check_duplicates(t_ls *node, t_ls *head);
 int				ft_check_sort(t_ls *top);
 void			ft_free_ls(t_ls **top);
-
 
 void			ft_set_srt_data(t_sr *sr, t_ls *head_a);
 void			ft_set_ins(t_ins *ins);

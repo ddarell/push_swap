@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_insert.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ddarell <ddarell@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/12/22 23:25:17 by ddarell           #+#    #+#             */
+/*   Updated: 2019/12/22 23:25:43 by ddarell          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ps_header.h"
 
 static void	run_operations(t_sr *sr, t_ls **head_a, t_ls **head_b)
@@ -78,7 +90,7 @@ static void	count_operations(t_ins *ins)
 	}
 }
 
-void	ft_insert(t_sr *sr, t_ls **head_a, t_ls **head_b)
+void		ft_insert(t_sr *sr, t_ls **head_a, t_ls **head_b)
 {
 	ft_set_ins(&sr->ins);
 	ft_find_closest_insert(sr, *head_a, *head_b);

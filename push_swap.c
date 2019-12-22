@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ddarell <ddarell@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/12/22 23:18:46 by ddarell           #+#    #+#             */
+/*   Updated: 2019/12/22 23:19:38 by ddarell          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ps_header.h"
 
 static void	print_commands(t_cm *cm)
@@ -32,7 +44,7 @@ int			main(int ac, char **av)
 {
 	t_ls *head_a;
 	t_ls *head_b;
-	t_sr	sr;
+	t_sr sr;
 
 	head_a = NULL;
 	head_b = NULL;

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_int_tab_func.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ddarell <ddarell@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/12/22 23:24:24 by ddarell           #+#    #+#             */
+/*   Updated: 2019/12/22 23:25:10 by ddarell          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ps_header.h"
 
 int	ft_int_tab_copy(int *dst, int *src)
@@ -13,23 +25,3 @@ int	ft_int_tab_copy(int *dst, int *src)
 	dst[i] = 0;
 	return (i);
 }
-/*
-int	ft_find_int_tab(int *tab, int num)
-{
-	while (*tab && *tab != num)
-		tab++;
-	return (*tab != 0);
-}
-
-void	ft_add_int_tab(int *tab, t_ls *node, t_ls *top)
-{
-	t_ls *tmp;
-
-	while (*tab)
-		tab++;
-	*tab = node->ord;
-	*(tab + 1) = 0;
-	tab++;
-	tmp = node->prev;
-	while ()
-}*/
