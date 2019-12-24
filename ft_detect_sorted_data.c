@@ -80,7 +80,7 @@ void ft_detect_sorted_data(t_sr *sr, t_ls *top, t_ls **dup)
 	int curr;
 	int max_lim;
 
-	if (!(tmp = (int *)malloc(sizeof(int) * sr->a_els + 1)))
+	if (!(tmp = (int *)malloc(sizeof(int) * (sr->a_els + 1))))
 		ft_error();
 	*dup = ft_search_ls_num(*dup, 1);
 	*tmp = 0;
@@ -88,7 +88,7 @@ void ft_detect_sorted_data(t_sr *sr, t_ls *top, t_ls **dup)
 	curr = find_data_sorted(*dup, sr->sorted, &max_lim);
 	while (remove_next_extr(dup, max_lim))
 	{
-		if ((find_data_sorted(*dup, tmp, &max_lim)) >= curr)
+		if ((find_data_sorted(*dup, tmp, &max_lim)) > curr)
 			curr = ft_int_tab_copy(sr->sorted, tmp);
 	}
 	match_sorted_numbers(top, sr->sorted);

@@ -22,18 +22,20 @@ SRCS_CH =	checker.c\
 			ft_finish_sort.c\
 			ft_func_ls.c\
 			ft_generate_commands.c\
-			ft_get_next_command.c\
+			ft_read_exec_commands.c\
 			ft_get_order.c\
 			ft_insert.c\
 			ft_int_tab_func.c\
 			ft_nodes.c\
 			ft_pab.c\
-			ft_print_stack.c\
+			ft_show.c\
 			ft_rabr.c\
 			ft_rrabr.c\
 			ft_sabs.c\
 			ft_search_in_ls.c\
 			ft_sets.c\
+			ft_usage.c\
+			ft_check_option.c\
 
 SRCS_PS =	push_swap.c\
 			ft_check_pa.c\
@@ -55,12 +57,14 @@ SRCS_PS =	push_swap.c\
 			ft_int_tab_func.c\
 			ft_nodes.c\
 			ft_pab.c\
-			ft_print_stack.c\
+			ft_show.c\
 			ft_rabr.c\
 			ft_rrabr.c\
 			ft_sabs.c\
 			ft_search_in_ls.c\
 			ft_sets.c\
+			ft_usage.c\
+			ft_check_option.c\
 
 .PHONY: all clean fclean re lib
 

@@ -64,7 +64,8 @@ void			ft_fill_stack_a(t_ls **head, char **av, int ac)
 	node = NULL;
 	while (++i < ac && av[i])
 	{
-		str = ft_strtrim(av[i]);
+		if (!(str = ft_strtrim(av[i])))
+			ft_error();
 		if (*str == 0)
 			ft_error();
 		while (str[j])

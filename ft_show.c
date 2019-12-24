@@ -18,7 +18,6 @@ void	ft_print_stack(t_ls *top)
 
 	if (!(top))
 	{
-		ft_printf("\n");
 		return ;
 	}
 	if ((ft_bit_check(top->fl, INS)) == 1)
@@ -38,13 +37,32 @@ void	ft_print_stack(t_ls *top)
 			ft_printf("%d\t", tmp->numb);
 		tmp = tmp->next;
 	}
-	ft_printf("\n");
 }
 
 void	ft_print_stacks(t_ls *head_a, t_ls *head_b)
 {
-	ft_printf("_____________________________\n");
+	ft_printf("(A - top) ||\t");
 	ft_print_stack(head_a);
+	ft_printf("\n");
+	ft_printf("(B - top) ||\t");
 	ft_print_stack(head_b);
-	ft_printf("_____________________________\n");
+	ft_printf("\n\n");
+}
+
+void	ft_show(t_sr *sr, t_ls *head_a, t_ls *head_b, char *op)
+{
+//	system("clear");
+	if (sr)
+	{
+		ft_printf("%s\nLast command:\t%s\nCommands used:\t%d\n", sr->info, op, sr->ops);
+		ft_printf("_________________________\n");
+		ft_print_stacks(head_a, head_b);
+	}
+	else
+	{
+		ft_printf("OPERATIONS DEMONSTRATION\nLast command:\t%s\n\n", op);
+		ft_printf("_________________________\n");
+		ft_print_stacks(head_a, head_b);
+	}
+//	usleep(500);
 }

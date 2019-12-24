@@ -12,64 +12,30 @@
 
 #include "ps_header.h"
 
-static int	compare_symbol(char compared, char s0, char s1, char s2)
+static int	get_fd(int *fd, int *ac, char *filename)
 {
-	if (s0 && compared == s0)
-		return (0);
-	if (s1 && compared == s1)
-		return (1);
-	if (s2 && compared == s2)
-		return (2);
-	ft_error();
-	return (-1);
-}
-
-static int	check_command(char *cmd)
-{
-	int i;
-
-	i = ft_strlen(cmd);
-	if (i == 2)
-	{
-		if (cmd[0] == 's')
-			return (compare_symbol(cmd[1], 'a', 'b', 's'));
-		else if (cmd[0] == 'p')
-			return (3 + compare_symbol(cmd[1], 'a', 'b', 0));
-		else if (cmd[0] == 'r')
-			return (5 + compare_symbol(cmd[1], 'a', 'b', 'r'));
-	}
-	else if (i == 3)
-	{
-		if (cmd[0] == 'r' && cmd[1] == 'r')
-			return (8 + compare_symbol(cmd[2], 'a', 'b', 'r'));
-	}
-	ft_error();
-	return (-1);
-}
-
-static void	read_exec_commands(t_ls **head_a, t_ls **head_b)
-{
-	char	cmd[5];
-	void	(*command[11])(t_ls **, t_ls **);
-
-	ft_set_commands(command);
-	while ((ft_get_next_command(0, cmd)) > 0)
-		command[check_command(cmd)](head_a, head_b);
+	*fd = open(filename, O_RDONLY);
+	if (*fd == -1)
+		ft_no_file();
+	*ac -= 1;
+	return (1);
 }
 
 int			main(int ac, char **av)
 {
-	t_ls *head_a;
-	t_ls *head_b;
+	t_ls	*head_a;
+	t_ls	*head_b;
+	int 	fl;
+	int 	fd;
 
 	head_a = NULL;
 	head_b = NULL;
+	av += ft_check_options(av, &ac, &fl);
+//	av = (ft_bit_check(fl, FRD)) ? av + get_fd(&fd, &ac, *av) : av;
 	if (ac < 2)
 		return (0);
 	ft_fill_stack_a(&head_a, av, ac);
-	if (!(head_a))
-		return (0);
-	read_exec_commands(&head_a, &head_b);
+	ft_read_exec_commands(fd, &head_a, &head_b, fl);
 	if (head_b == NULL && ft_check_sort(head_a))
 		ft_printf("OK\n");
 	else

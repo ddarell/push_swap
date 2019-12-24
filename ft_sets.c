@@ -41,7 +41,7 @@ void	ft_set_ins(t_ins *ins)
 	ins->ofs = 0;
 }
 
-void	ft_set_srt_data(t_sr *sr, t_ls *head_a)
+void	ft_set_sr(t_sr *sr, t_ls *head_a)
 {
 	sr->a_els = ft_count_ls(head_a);
 	sr->b_els = 0;
@@ -51,4 +51,5 @@ void	ft_set_srt_data(t_sr *sr, t_ls *head_a)
 	sr->sorted = NULL;
 	ft_set_ins(&sr->ins);
 	sr->ops = 0;
+	ft_strcpy(sr->info, "ORIGINAL DATA");
 }

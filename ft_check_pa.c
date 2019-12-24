@@ -9,7 +9,7 @@ static void	run_pa(t_sr *sr, t_ls **head_a, t_ls **head_b)
 	sr->b_els -= 1;
 	sr->srt_els_a += 1;
 	ft_bit_on(&(*head_a)->fl, ORD);
-//	ft_print_stacks(*head_a, *head_b);//
+	(ft_bit_check(sr->fl, VIS)) ? ft_show(sr, *head_a, *head_b, "pa") : 1;
 }
 
 int ft_pa_ability(t_ls *head_a, t_ls *head_b)
@@ -17,6 +17,8 @@ int ft_pa_ability(t_ls *head_a, t_ls *head_b)
 	t_ls *prev;
 	t_ls *next;
 
+	if (!(head_b))
+		return (0);
 	prev = head_a->prev;
 	next = head_a;
 	while (!(ft_bit_check(next->fl, ORD)))

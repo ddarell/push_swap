@@ -14,10 +14,13 @@
 # define PS_HEADER_H
 
 # include "ft_printf/ft_printf.h"
+# include "fcntl.h"
 
 # define ORD 0
 # define LDIR 1
 # define INS 2
+# define VIS 3
+# define FRD 4
 
 typedef	struct	s_ls
 {
@@ -56,13 +59,22 @@ typedef	struct	s_sr
 	int			*sorted;
 	t_ins		ins;
 	int			ops;
+	int 		fl;
+	char		info[50];
 }				t_sr;
 
 void			ft_error(void);
+void			ft_invalid_option(void);
+void			ft_no_file(void);
+
+void			ft_usage_ps(void);
+void			ft_usage_ch(void);
 
 void			ft_fill_stack_a(t_ls **head, char **av, int ac);
+
 void			ft_set_commands(void (**command)(t_ls **, t_ls **));
-int				ft_get_next_command(int fd, char *cmd);
+void ft_read_exec_commands(int fd, t_ls **head_a, t_ls **head_b, int fl);
+//int				ft_get_next_command(int fd, char *cmd);
 
 t_ls			*ft_new_node(int data);
 void			ft_add_node_back(t_ls **head, t_ls *node);
@@ -85,7 +97,7 @@ void			ft_check_duplicates(t_ls *node, t_ls *head);
 int				ft_check_sort(t_ls *top);
 void			ft_free_ls(t_ls **top);
 
-void			ft_set_srt_data(t_sr *sr, t_ls *head_a);
+void			ft_set_sr(t_sr *sr, t_ls *head_a);
 void			ft_set_ins(t_ins *ins);
 
 int				ft_count_ls(t_ls *head_a);
@@ -125,7 +137,10 @@ void			ft_run_rrb(t_sr *sr, t_ls **head_a, t_ls **head_b);
 void			ft_run_rrr(t_sr *sr, t_ls **head_a, t_ls **head_b);
 void			ft_finish_sort(t_sr *sr, t_ls **head_a, t_ls **head_b);
 
-void			ft_print_stack(t_ls	*top);
 void			ft_print_stacks(t_ls *head_a, t_ls *head_b);
+void			ft_print_stack(t_ls	*top);
+
+int				ft_check_options(char **av, int *ac, int *fl);
+void			ft_show(t_sr *sr, t_ls *head_a, t_ls *head_b, char *op);
 
 #endif
