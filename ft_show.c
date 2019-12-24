@@ -6,7 +6,7 @@
 /*   By: ddarell <ddarell@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 23:31:22 by ddarell           #+#    #+#             */
-/*   Updated: 2019/12/24 18:21:24 by ddarell          ###   ########.fr       */
+/*   Updated: 2019/12/24 21:58:47 by ddarell          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ void	ft_print_stacks(t_ls *head_a, t_ls *head_b)
 
 void	ft_show(t_sr *sr, t_ls *head_a, t_ls *head_b, char *op)
 {
+	int i;
+
+	i = 3000000;
 	system("clear");
 	if (sr)
 	{
@@ -65,5 +68,5 @@ void	ft_show(t_sr *sr, t_ls *head_a, t_ls *head_b, char *op)
 		ft_printf("_________________________\n");
 		ft_print_stacks(head_a, head_b);
 	}
-	usleep(1500000);
+	(op) ? usleep(i / 2) : usleep(i);
 }

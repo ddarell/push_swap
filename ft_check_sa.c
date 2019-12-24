@@ -6,7 +6,7 @@
 /*   By: ddarell <ddarell@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 18:32:14 by ddarell           #+#    #+#             */
-/*   Updated: 2019/12/24 18:36:01 by ddarell          ###   ########.fr       */
+/*   Updated: 2019/12/24 21:54:31 by ddarell          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void	run_sa(t_sr *sr, t_ls **head_a, t_ls **head_b)
 {
+	(ft_bit_check(sr->fl, VIS)) ? ft_show(sr, *head_a, *head_b, "sa") : 1;
 	ft_add_command(&sr->cm, "sa");
 	ft_sa(head_a, head_b);
 	sr->ops += 1;
@@ -21,7 +22,7 @@ static void	run_sa(t_sr *sr, t_ls **head_a, t_ls **head_b)
 	sr->nsrt_els_a -= 1;
 	ft_bit_on(&(*head_a)->fl, ORD);
 	ft_bit_on(&(*head_a)->next->fl, ORD);
-	(ft_bit_check(sr->fl, VIS)) ? ft_show(sr, *head_a, *head_b, "sa") : 1;
+	(ft_bit_check(sr->fl, VIS)) ? ft_show(sr, *head_a, *head_b, "sa_done") : 1;
 }
 
 t_ls		*find_srt_pair(t_ls *pair, int *delta)

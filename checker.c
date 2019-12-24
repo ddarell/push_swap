@@ -6,7 +6,7 @@
 /*   By: ddarell <ddarell@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 23:35:01 by ddarell           #+#    #+#             */
-/*   Updated: 2019/12/24 18:42:21 by ddarell          ###   ########.fr       */
+/*   Updated: 2019/12/24 21:44:27 by ddarell          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int			main(int ac, char **av)
 	head_a = NULL;
 	head_b = NULL;
 	av += ft_check_options(av, &ac, &fl);
+	(ft_bit_check(fl, HLP)) ? ft_usage_ch() : 1;
 	if (ac < 2 + (ft_bit_check(fl, FRD)))
 		return (0);
 	av = (ft_bit_check(fl, FRD)) ? av + get_fd(&fd, &ac, *(av + 1)) : av;

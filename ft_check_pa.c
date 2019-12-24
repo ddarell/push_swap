@@ -6,7 +6,7 @@
 /*   By: ddarell <ddarell@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 18:39:32 by ddarell           #+#    #+#             */
-/*   Updated: 2019/12/24 18:39:45 by ddarell          ###   ########.fr       */
+/*   Updated: 2019/12/24 21:54:14 by ddarell          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void	run_pa(t_sr *sr, t_ls **head_a, t_ls **head_b)
 {
+	(ft_bit_check(sr->fl, VIS)) ? ft_show(sr, *head_a, *head_b, "pa") : 1;
 	ft_add_command(&sr->cm, "pa");
 	ft_pa(head_a, head_b);
 	sr->ops += 1;
@@ -21,7 +22,7 @@ static void	run_pa(t_sr *sr, t_ls **head_a, t_ls **head_b)
 	sr->b_els -= 1;
 	sr->srt_els_a += 1;
 	ft_bit_on(&(*head_a)->fl, ORD);
-	(ft_bit_check(sr->fl, VIS)) ? ft_show(sr, *head_a, *head_b, "pa") : 1;
+	(ft_bit_check(sr->fl, VIS)) ? ft_show(sr, *head_a, *head_b, "pa_done") : 1;
 }
 
 int			ft_pa_ability(t_ls *head_a, t_ls *head_b)

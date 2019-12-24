@@ -6,7 +6,7 @@
 /*   By: ddarell <ddarell@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 18:37:50 by ddarell           #+#    #+#             */
-/*   Updated: 2019/12/24 18:38:46 by ddarell          ###   ########.fr       */
+/*   Updated: 2019/12/24 21:55:20 by ddarell          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,29 @@
 
 void		ft_run_rb(t_sr *sr, t_ls **head_a, t_ls **head_b)
 {
+	(ft_bit_check(sr->fl, VIS)) ? ft_show(sr, *head_a, *head_b, "rb") : 1;
 	ft_add_command(&sr->cm, "rb");
 	ft_rb(head_a, head_b);
 	sr->ops += 1;
-	(ft_bit_check(sr->fl, VIS)) ? ft_show(sr, *head_a, *head_b, "rb") : 1;
+	(ft_bit_check(sr->fl, VIS)) ? ft_show(sr, *head_a, *head_b, "rb_done") : 1;
 }
 
 void		ft_run_ra(t_sr *sr, t_ls **head_a, t_ls **head_b)
 {
+	(ft_bit_check(sr->fl, VIS)) ? ft_show(sr, *head_a, *head_b, "ra") : 1;
 	ft_add_command(&sr->cm, "ra");
 	ft_ra(head_a, head_b);
 	sr->ops += 1;
-	(ft_bit_check(sr->fl, VIS)) ? ft_show(sr, *head_a, *head_b, "ra") : 1;
+	(ft_bit_check(sr->fl, VIS)) ? ft_show(sr, *head_a, *head_b, "ra_done") : 1;
 }
 
 void		ft_run_rr(t_sr *sr, t_ls **head_a, t_ls **head_b)
 {
+	(ft_bit_check(sr->fl, VIS)) ? ft_show(sr, *head_a, *head_b, "rr") : 1;
 	ft_add_command(&sr->cm, "rr");
 	ft_rr(head_a, head_b);
 	sr->ops += 1;
-	(ft_bit_check(sr->fl, VIS)) ? ft_show(sr, *head_a, *head_b, "rr") : 1;
+	(ft_bit_check(sr->fl, VIS)) ? ft_show(sr, *head_a, *head_b, "rr_done") : 1;
 }
 
 static int	rr_ability(t_ls *head_a, t_ls *head_b)

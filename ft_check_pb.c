@@ -6,7 +6,7 @@
 /*   By: ddarell <ddarell@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 18:38:54 by ddarell           #+#    #+#             */
-/*   Updated: 2019/12/24 18:39:07 by ddarell          ###   ########.fr       */
+/*   Updated: 2019/12/24 21:55:26 by ddarell          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 static void	run_pb(t_sr *sr, t_ls **head_a, t_ls **head_b)
 {
+	(ft_bit_check(sr->fl, VIS)) ? ft_show(sr, *head_a, *head_b, "pb") : 1;
 	ft_add_command(&sr->cm, "pb");
 	ft_pb(head_a, head_b);
 	sr->ops += 1;
 	sr->a_els -= 1;
 	sr->b_els += 1;
 	sr->nsrt_els_a -= 1;
-	(ft_bit_check(sr->fl, VIS)) ? ft_show(sr, *head_a, *head_b, "pb") : 1;
+	(ft_bit_check(sr->fl, VIS)) ? ft_show(sr, *head_a, *head_b, "pb_done") : 1;
 }
 
 static int	pb_ability(t_ls *head_a)

@@ -6,7 +6,7 @@
 /*   By: ddarell <ddarell@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 23:33:44 by ddarell           #+#    #+#             */
-/*   Updated: 2019/12/24 18:43:39 by ddarell          ###   ########.fr       */
+/*   Updated: 2019/12/24 21:42:44 by ddarell          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define INS 2
 # define VIS 3
 # define FRD 4
+# define HLP 5
 
 typedef	struct	s_ls
 {
