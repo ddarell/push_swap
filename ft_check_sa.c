@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_check_sa.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ddarell <ddarell@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/12/24 18:32:14 by ddarell           #+#    #+#             */
+/*   Updated: 2019/12/24 18:36:01 by ddarell          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ps_header.h"
 
 static void	run_sa(t_sr *sr, t_ls **head_a, t_ls **head_b)
@@ -12,7 +24,7 @@ static void	run_sa(t_sr *sr, t_ls **head_a, t_ls **head_b)
 	(ft_bit_check(sr->fl, VIS)) ? ft_show(sr, *head_a, *head_b, "sa") : 1;
 }
 
-t_ls	*find_srt_pair(t_ls *pair, int *delta)
+t_ls		*find_srt_pair(t_ls *pair, int *delta)
 {
 	t_ls *min_bdr;
 	t_ls *max_bdr;
@@ -33,7 +45,7 @@ t_ls	*find_srt_pair(t_ls *pair, int *delta)
 	return (NULL);
 }
 
-t_ls	*find_nsrt_pair(t_ls *max_bdr, int *delta)
+t_ls		*find_nsrt_pair(t_ls *max_bdr, int *delta)
 {
 	t_ls *min_bdr;
 	t_ls *pair;
@@ -53,7 +65,7 @@ t_ls	*find_nsrt_pair(t_ls *max_bdr, int *delta)
 	return (NULL);
 }
 
-int	ft_check_sa(t_sr *sr, t_ls **head_a, t_ls **head_b)
+int			ft_check_sa(t_sr *sr, t_ls **head_a, t_ls **head_b)
 {
 	t_ls	*pair;
 	int		delta;
@@ -68,18 +80,10 @@ int	ft_check_sa(t_sr *sr, t_ls **head_a, t_ls **head_b)
 	if (!(pair))
 		return (0);
 	if (delta)
-	{
 		return (0);
-		ft_check_rr(sr, head_a, head_b);
-		while (delta)
-		{
-			ft_check_pb(sr, head_a, head_b);
-			delta--;
-		}
-		ft_check_rrr(sr, head_a, head_b);
-	}
 	ft_bit_on(&(*head_a)->next->fl, INS);
 	ft_bit_on(&(*head_a)->fl, INS);
+	(ft_bit_check(sr->fl, VIS)) ? ft_show(sr, *head_a, *head_b, "") : 1;
 	run_sa(sr, head_a, head_b);
 	ft_bit_off(&(*head_a)->next->fl, INS);
 	ft_bit_off(&(*head_a)->fl, INS);

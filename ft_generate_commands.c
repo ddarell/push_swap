@@ -6,7 +6,7 @@
 /*   By: ddarell <ddarell@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/22 23:34:34 by ddarell           #+#    #+#             */
-/*   Updated: 2019/12/22 23:34:35 by ddarell          ###   ########.fr       */
+/*   Updated: 2019/12/24 18:40:57 by ddarell          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,18 @@ static t_ls	*run_while_ord(t_ls *run, int *counter)
 	return (run);
 }
 
-static void set_direction(t_sr *sr, t_ls *tmp)
+static void	set_direction(t_sr *sr, t_ls *tmp)
 {
 	t_ls	*run;
 	t_ls	*best;
-	int 	i;
+	int		i;
 	int		k;
-	int 	max;
+	int		max;
 
 	k = 0;
 	best = tmp;
 	max = 0;
-	while(k < sr->a_els / 2 && sr->nsrt_els_a)
+	while (k < sr->a_els / 2 && sr->nsrt_els_a)
 	{
 		i = 0;
 		run = tmp->prev;
@@ -50,7 +50,7 @@ static void set_direction(t_sr *sr, t_ls *tmp)
 	ft_bit_on(&best->fl, LDIR);
 }
 
-static void check_sorted_data(t_sr *sr, t_ls *head_a)
+static void	check_sorted_data(t_sr *sr, t_ls *head_a)
 {
 	t_ls	*head_a_dup;
 
@@ -72,7 +72,7 @@ static void check_sorted_data(t_sr *sr, t_ls *head_a)
 	sr->sorted = NULL;
 }
 
-void	ft_generate_commands(t_sr *sr, t_ls **head_a, t_ls **head_b)
+void		ft_generate_commands(t_sr *sr, t_ls **head_a, t_ls **head_b)
 {
 	check_sorted_data(sr, *head_a);
 	ft_strcpy(sr->info, "going to START POINT");

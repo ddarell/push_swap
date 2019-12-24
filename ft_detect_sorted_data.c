@@ -1,13 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_detect_sorted_data.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ddarell <ddarell@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/12/24 18:30:31 by ddarell           #+#    #+#             */
+/*   Updated: 2019/12/24 18:41:19 by ddarell          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ps_header.h"
 
-static void	set_each_point_limited(t_ls	*dup)
+static void	set_each_point_limited(t_ls *dup)
 {
 	t_ls *cur;
 	t_ls *run;
 
 	dup->fl = 0;
 	dup->prev->fl = 0;
-
 	cur = dup->next;
 	while (cur != dup->prev)
 	{
@@ -35,10 +46,10 @@ static void	match_sorted_numbers(t_ls *top, int *tab)
 	}
 }
 
-static int find_data_sorted(t_ls *top, int *data, int *max_lim)
+static int	find_data_sorted(t_ls *top, int *data, int *max_lim)
 {
-	int i;
-	t_ls *tmp;
+	int		i;
+	t_ls	*tmp;
 
 	i = 0;
 	data[i] = top->numb;
@@ -59,7 +70,7 @@ static int find_data_sorted(t_ls *top, int *data, int *max_lim)
 	return (i);
 }
 
-static int remove_next_extr(t_ls **top, int max_lim)
+static int	remove_next_extr(t_ls **top, int max_lim)
 {
 	t_ls *tmp;
 
@@ -74,7 +85,7 @@ static int remove_next_extr(t_ls **top, int max_lim)
 	return (1);
 }
 
-void ft_detect_sorted_data(t_sr *sr, t_ls *top, t_ls **dup)
+void		ft_detect_sorted_data(t_sr *sr, t_ls *top, t_ls **dup)
 {
 	int *tmp;
 	int curr;

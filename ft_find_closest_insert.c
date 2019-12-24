@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_find_closest_insert.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ddarell <ddarell@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/12/24 18:29:18 by ddarell           #+#    #+#             */
+/*   Updated: 2019/12/24 18:30:08 by ddarell          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ps_header.h"
 
-static void copy_ins(t_ins *dst, t_ins *src)
+static void	copy_ins(t_ins *dst, t_ins *src)
 {
 	dst->ins_a = src->ins_a;
 	dst->ins_b = src->ins_b;
@@ -26,12 +38,12 @@ static void	count_a_stack_offset(t_sr *sr, int offset, int rdir)
 	}
 }
 
-t_ls *ft_search_a_push_space(t_ls *head_a, t_sr *sr)
+t_ls		*ft_search_a_push_space(t_ls *head_a, t_sr *sr)
 {
-	t_ls *prev;
-	t_ls *next;
-	int	i;
-	int rdir;
+	t_ls	*prev;
+	t_ls	*next;
+	int		i;
+	int		rdir;
 
 	i = 0;
 	next = head_a;
@@ -50,7 +62,7 @@ t_ls *ft_search_a_push_space(t_ls *head_a, t_sr *sr)
 	return (rdir == 1 ? next : prev);
 }
 
-static int 	min_cm_to_push(t_ls *head_a, t_ls *insert_b, t_sr *sr, int rdir)
+static int	min_cm_to_push(t_ls *head_a, t_ls *insert_b, t_sr *sr, int rdir)
 {
 	int ops[4];
 
@@ -74,10 +86,10 @@ static int 	min_cm_to_push(t_ls *head_a, t_ls *insert_b, t_sr *sr, int rdir)
 	return (sr->ins.ops);
 }
 
-int ft_find_closest_insert(t_sr *sr, t_ls *head_a, t_ls *head_b)
+int			ft_find_closest_insert(t_sr *sr, t_ls *head_a, t_ls *head_b)
 {
-	t_ls *prev;
-	t_ls *next;
+	t_ls	*prev;
+	t_ls	*next;
 	t_ins	best;
 
 	ft_set_ins(&best);

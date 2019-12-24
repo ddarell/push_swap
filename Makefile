@@ -9,30 +9,16 @@ IFLAGS = -I $(HEADER)
 LFLAGS = -L $(LIB_DIR) -lftprintf
 
 SRCS_CH =	checker.c\
-			ft_check_pa.c\
-			ft_check_pb.c\
-			ft_check_rr.c\
-			ft_check_rrr.c\
-			ft_check_sa.c\
-			ft_commant_list.c\
-			ft_detect_sorted_data.c\
 			ft_error.c\
 			ft_fill_stack_a.c\
-			ft_find_closest_insert.c\
-			ft_finish_sort.c\
 			ft_func_ls.c\
-			ft_generate_commands.c\
 			ft_read_exec_commands.c\
-			ft_get_order.c\
-			ft_insert.c\
-			ft_int_tab_func.c\
 			ft_nodes.c\
 			ft_pab.c\
 			ft_show.c\
 			ft_rabr.c\
 			ft_rrabr.c\
 			ft_sabs.c\
-			ft_search_in_ls.c\
 			ft_sets.c\
 			ft_usage.c\
 			ft_check_option.c\
@@ -51,7 +37,6 @@ SRCS_PS =	push_swap.c\
 			ft_finish_sort.c\
 			ft_func_ls.c\
 			ft_generate_commands.c\
-			ft_get_next_command.c\
 			ft_get_order.c\
 			ft_insert.c\
 			ft_int_tab_func.c\

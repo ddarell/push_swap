@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_n_free.c                                  :+:      :+:    :+:   */
+/*   ft_func_ls.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddarell <ddarell@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 23:33:28 by ddarell           #+#    #+#             */
-/*   Updated: 2019/12/11 23:33:35 by ddarell          ###   ########.fr       */
+/*   Updated: 2019/12/24 18:29:04 by ddarell          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	ft_free_ls(t_ls **top)
 	*top = NULL;
 }
 
-int ft_count_ls(t_ls *head_a)
+int		ft_count_ls(t_ls *head_a)
 {
 	int		i;
 	t_ls	*tmp;
@@ -84,7 +84,7 @@ int ft_count_ls(t_ls *head_a)
 	return (i);
 }
 
-t_ls *ft_dup_ls(t_ls *dst, t_ls *src)
+t_ls	*ft_dup_ls(t_ls *dst, t_ls *src)
 {
 	t_ls	*node;
 	t_ls	*tmp;

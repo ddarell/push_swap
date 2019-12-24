@@ -6,7 +6,7 @@
 /*   By: ddarell <ddarell@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 23:33:44 by ddarell           #+#    #+#             */
-/*   Updated: 2019/12/22 23:21:17 by ddarell          ###   ########.fr       */
+/*   Updated: 2019/12/24 18:43:39 by ddarell          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ typedef	struct	s_sr
 	int			*sorted;
 	t_ins		ins;
 	int			ops;
-	int 		fl;
+	int			fl;
 	char		info[50];
 }				t_sr;
 
@@ -73,8 +73,8 @@ void			ft_usage_ch(void);
 void			ft_fill_stack_a(t_ls **head, char **av, int ac);
 
 void			ft_set_commands(void (**command)(t_ls **, t_ls **));
-void ft_read_exec_commands(int fd, t_ls **head_a, t_ls **head_b, int fl);
-//int				ft_get_next_command(int fd, char *cmd);
+void			ft_read_exec_commands(int fd, t_ls **head_a,
+										t_ls **head_b, int fl);
 
 t_ls			*ft_new_node(int data);
 void			ft_add_node_back(t_ls **head, t_ls *node);
@@ -106,8 +106,6 @@ void			ft_sort_array(t_sr *sr);
 void			ft_init_elem_ord(t_sr *sr, t_ls *head_a);
 void			ft_detect_sorted_data(t_sr *sr, t_ls *top, t_ls **dup);
 
-//int			ft_find_int_tab(int *tab, int num);
-//void			ft_add_int_tab(int *tab, t_ls *node, t_ls *top);
 int				ft_int_tab_copy(int *dst, int *src);
 t_ls			*ft_dup_ls(t_ls *dst, t_ls *src);
 t_ls			*ft_search_ls_num(t_ls *top, int num);
@@ -118,7 +116,6 @@ void			ft_generate_commands(t_sr *sr, t_ls **head_a, t_ls **head_b);
 int				ft_check_pa(t_sr *sr, t_ls **head_a, t_ls **head_b);
 int				ft_pa_ability(t_ls *head_a, t_ls *head_b);
 
-//int			ft_check_pa(t_sr *srt_data, t_ls **head_a, t_ls **head_b);
 void			ft_add_command(t_cm **cm, char *str);
 int				ft_check_pb(t_sr *sr, t_ls **head_a, t_ls **head_b);
 int				ft_check_rr(t_sr *sr, t_ls **head_a, t_ls **head_b);

@@ -6,7 +6,7 @@
 /*   By: ddarell <ddarell@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/22 23:25:17 by ddarell           #+#    #+#             */
-/*   Updated: 2019/12/22 23:25:43 by ddarell          ###   ########.fr       */
+/*   Updated: 2019/12/24 18:27:53 by ddarell          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void		ft_insert(t_sr *sr, t_ls **head_a, t_ls **head_b)
 	ft_find_closest_insert(sr, *head_a, *head_b);
 	ft_bit_on(&sr->ins.ins_a->fl, INS);
 	ft_bit_on(&sr->ins.ins_b->fl, INS);
-//	ft_print_stacks(*head_a, *head_b);//
+	(ft_bit_check(sr->fl, VIS)) ? ft_show(sr, *head_a, *head_b, "") : 1;
 	count_operations(&sr->ins);
 	run_operations(sr, head_a, head_b);
 	ft_bit_off(&sr->ins.ins_a->fl, INS);

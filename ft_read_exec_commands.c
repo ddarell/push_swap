@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_next_command.c                              :+:      :+:    :+:   */
+/*   ft_read_exec_commands.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddarell <ddarell@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 23:32:33 by ddarell           #+#    #+#             */
-/*   Updated: 2019/12/11 23:36:06 by ddarell          ###   ########.fr       */
+/*   Updated: 2019/12/24 18:23:32 by ddarell          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static int	get_next_command(int fd, char *cmd)
 	return (ret);
 }
 
-void ft_read_exec_commands(int fd, t_ls **head_a, t_ls **head_b, int fl)
+void		ft_read_exec_commands(int fd, t_ls **head_a, t_ls **head_b, int fl)
 {
 	char	cmd[5];
 	void	(*command[11])(t_ls **, t_ls **);

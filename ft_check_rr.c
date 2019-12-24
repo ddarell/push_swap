@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_check_rr.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ddarell <ddarell@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/12/24 18:37:50 by ddarell           #+#    #+#             */
+/*   Updated: 2019/12/24 18:38:46 by ddarell          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ps_header.h"
 
-void	ft_run_rb(t_sr *sr, t_ls **head_a, t_ls **head_b)
+void		ft_run_rb(t_sr *sr, t_ls **head_a, t_ls **head_b)
 {
 	ft_add_command(&sr->cm, "rb");
 	ft_rb(head_a, head_b);
@@ -8,7 +20,7 @@ void	ft_run_rb(t_sr *sr, t_ls **head_a, t_ls **head_b)
 	(ft_bit_check(sr->fl, VIS)) ? ft_show(sr, *head_a, *head_b, "rb") : 1;
 }
 
-void	ft_run_ra(t_sr *sr, t_ls **head_a, t_ls **head_b)
+void		ft_run_ra(t_sr *sr, t_ls **head_a, t_ls **head_b)
 {
 	ft_add_command(&sr->cm, "ra");
 	ft_ra(head_a, head_b);
@@ -16,7 +28,7 @@ void	ft_run_ra(t_sr *sr, t_ls **head_a, t_ls **head_b)
 	(ft_bit_check(sr->fl, VIS)) ? ft_show(sr, *head_a, *head_b, "ra") : 1;
 }
 
-void	ft_run_rr(t_sr *sr, t_ls **head_a, t_ls **head_b)
+void		ft_run_rr(t_sr *sr, t_ls **head_a, t_ls **head_b)
 {
 	ft_add_command(&sr->cm, "rr");
 	ft_rr(head_a, head_b);
@@ -24,11 +36,11 @@ void	ft_run_rr(t_sr *sr, t_ls **head_a, t_ls **head_b)
 	(ft_bit_check(sr->fl, VIS)) ? ft_show(sr, *head_a, *head_b, "rr") : 1;
 }
 
-static int rr_ability(t_ls *head_a, t_ls *head_b)
+static int	rr_ability(t_ls *head_a, t_ls *head_b)
 {
 	t_ls	*tmp;
 	int		i;
-	int 	j;
+	int		j;
 
 	i = 0;
 	j = 0;
@@ -46,13 +58,10 @@ static int rr_ability(t_ls *head_a, t_ls *head_b)
 		tmp = tmp->next;
 		j++;
 	}
-//	if ((ft_pa_ability(head_a->next, head_b)) < (ft_pa_ability(head_a->next, head_b->next)))
-//		return (1);
-//	return (0);
 	return (j < i);
 }
 
-int	ft_check_rr(t_sr *sr, t_ls **head_a, t_ls **head_b)
+int			ft_check_rr(t_sr *sr, t_ls **head_a, t_ls **head_b)
 {
 	if (!(*head_a) || sr->a_els < 2)
 		return (0);

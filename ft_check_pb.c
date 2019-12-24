@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_check_pb.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ddarell <ddarell@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/12/24 18:38:54 by ddarell           #+#    #+#             */
+/*   Updated: 2019/12/24 18:39:07 by ddarell          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ps_header.h"
 
 static void	run_pb(t_sr *sr, t_ls **head_a, t_ls **head_b)
@@ -18,7 +30,7 @@ static int	pb_ability(t_ls *head_a)
 	return (0);
 }
 
-int	ft_check_pb(t_sr *sr, t_ls **head_a, t_ls **head_b)
+int			ft_check_pb(t_sr *sr, t_ls **head_a, t_ls **head_b)
 {
 	if (!(*head_a))
 		return (0);

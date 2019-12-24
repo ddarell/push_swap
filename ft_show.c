@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_stack.c                                   :+:      :+:    :+:   */
+/*   ft_show.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddarell <ddarell@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 23:31:22 by ddarell           #+#    #+#             */
-/*   Updated: 2019/12/11 23:36:25 by ddarell          ###   ########.fr       */
+/*   Updated: 2019/12/24 18:21:24 by ddarell          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,11 @@ void	ft_print_stacks(t_ls *head_a, t_ls *head_b)
 
 void	ft_show(t_sr *sr, t_ls *head_a, t_ls *head_b, char *op)
 {
-//	system("clear");
+	system("clear");
 	if (sr)
 	{
-		ft_printf("%s\nLast command:\t%s\nCommands used:\t%d\n", sr->info, op, sr->ops);
+		ft_printf("%s\nLast command:\t%s\nCommands used:\t%d\n",
+		sr->info, op, sr->ops);
 		ft_printf("_________________________\n");
 		ft_print_stacks(head_a, head_b);
 	}
@@ -64,5 +65,5 @@ void	ft_show(t_sr *sr, t_ls *head_a, t_ls *head_b, char *op)
 		ft_printf("_________________________\n");
 		ft_print_stacks(head_a, head_b);
 	}
-//	usleep(500);
+	usleep(1500000);
 }
